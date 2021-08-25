@@ -22,5 +22,6 @@
                 sgaga
             </span>
         `
-    console.log(hd.match(/<span>[\d\D]+<\/span>/));
+    console.log(hd.match(/<span>[\d\D]+<\/span>/)[0]);
+     console.log(hd.match(/.+/gs)[0]);
 </script>

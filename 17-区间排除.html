@@ -12,7 +12,7 @@
 </html>
 <script>
     let hd = `张三: 023-24141515,四: 024-1314151`
-    // [] 里面加 ^ 表示除去
+    // []原子表 里面加 ^ 表示除去
     console.log(hd.match(/[^\d\-:,\s]+/g));
     console.log(hd.match(/\p{sc=Han}+/gu));
 </script>
