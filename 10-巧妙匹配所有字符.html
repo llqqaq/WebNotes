@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巧妙匹配所有字符</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 使用 \s\S   \d\D
+    let hd = `
+            <span>
+                demosdada
+                safasfafa
+                sgaga
+            </span>
+        `
+    console.log(hd.match(/<span>[\d\D]+<\/span>/));
+</script>

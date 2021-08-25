@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取字符串中的数字</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<script>
+    let str = "saagaf1231sfasdgsg11"
+    // 直接把字符串拆开转化成数组
+    console.log([...str]);
+
+    // 过滤器 返回结果为true的item组成的数组
+    // parseInt('a')  NAN
+    // parseInt('1')  1
+    let nums = [...str].filter(item => {
+        return !Number.isNaN(parseInt(item))
+    })
+    console.log(nums.join(''));
+
+
+    // 使用正则获取字符串中的数字
+    console.log('正则表达式');
+    console.log(str.match(/\d+/g));
+</script>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点字符的使用</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /**
+     * \d < \w < .  
+     * . 除了换行之外的所有字符
+     * \. 表示 字符' . '
+     * /g 全局  /i 不区分大小写 /s 视为单行，也就是忽略/n
+    */
+    // 空格可以用' '或者/s表示
+    let demo = '010 - 1101'
+    console.log(demo.match(/\d+ - \d{4}/)); // 等同如下
+    console.log(demo.match(/\d+\s-\s\d{4}/));
+</script>

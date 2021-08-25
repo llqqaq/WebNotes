@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符边界约束</title>
+</head>
+<body>
+    <input type="text" name="user">
+    <span></span>
+</body>
+</html>
+<script>
+    let hd1 = 'sdad3fdf'
+    let hd2 = '3sdad3fdf3'
+    let hd3 = 3
+    console.log(/\d/.test(hd1)) // true 判断是否包含数字
+    console.log(/^\d/.test(hd2)); // true ^判断是否以数字开头
+    console.log(/\d$/.test(hd2)); // true $判断是否以数字结尾
+    console.log(/^\d$/.test(hd3)); // true 开头结尾都是数字
+
+
+
+    console.log('------------结构二------------');
+    document.querySelector('[name="user"]').addEventListener('keyup', function() {
+        console.log(this.value.match(/[a-z]{3,6}/)) // 当输入超过6位也生效，因为只匹配一段就满足
+        console.log(this.value.match(/^[a-z]{3,6}$/)) // 设置开头结尾都是这个标准,也就是整一段最多6位
+        let flag = this.value.match(/^[a-z]{3,6}$/)
+        document.querySelector('span').innerHTML = flag? '正确': '失败'
+    })
+</script>

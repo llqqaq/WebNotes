@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有效率的y模式</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = 'asbdsddddaa'
+
+    console.log('-----------------------------');
+    let reg1 = /a/g
+    console.log(reg1.exec(hd));
+    console.log(reg1.lastIndex);
+    console.log(reg1.exec(hd));
+    console.log(reg1.lastIndex);
+
+
+    console.log('-----------------------------');
+    /**
+     * y从lastIndex处开始匹配，只会连续匹配
+     * 这里lastIndex为0，开始匹配为a，不是s，所以直接停止匹配
+    */
+    let reg2 = /s/y
+    console.log(reg2.exec(hd));
+    console.log(reg2.lastIndex);  // 0
+
+
+    reg2.lastIndex = 4 // 手动修改lastIndex的值 连续匹配，第五处不符合，停止匹配，
+                       // 适合匹配大字段，且匹配内容连续，在前列的字符串
+    console.log(reg2.exec(hd));
+</script>

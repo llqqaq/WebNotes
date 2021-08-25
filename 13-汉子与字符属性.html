@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉子与字符属性</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = 'www.baidu.com2021 这是中文 ， 。'
+    console.log(hd.match(/\p{L}/gu));  // 匹配字符 数字不匹配
+    console.log(hd.match(/\p{P}/gu));  // 匹配标点符号
+    console.log(hd.match(/\p{sc=Han}/gu)); // 匹配中文
+
+
+    
+</script>

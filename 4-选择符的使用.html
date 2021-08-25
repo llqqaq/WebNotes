@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择符的使用</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let phone = "210-11000023"
+    /**
+     * |: 或者
+     * -： \-
+     * 数字： \d 代表数字0-9   \d+ 代表一个或多个数字
+    */
+    console.log(/(210|232)\-\d{7,8}/.test(phone));
+</script>

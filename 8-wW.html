@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>\w跟\W</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /**
+     * /w 字母 数字 下划线
+     * 
+    */
+
+    let email = '118170441@qq.com'
+
+    console.log(email.match(/^\w+@\w+\.\w+$/));
+
+
+
+    // 输入用户名 开头字母+数字  总长9-12
+    let username = prompt('请输入用户名') 
+    console.log(username.match(/^[a-z]\w{8,11}$/))
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数值和空白元字符</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /**
+     * \D 除了数字的字符
+     * \d 数字
+     */
+
+    let hd = `
+         张三: 010-2341512 李四: 020-21515152
+    `
+    // match是字符串的方法
+    console.log(hd.match(/\d{3}-\d{7,8}/g)); // g全局搜索
+
+    // 筛选出文字 使用[]，里面的^表示取非，都不要
+    console.log(hd.match(/[^-\d:,]+/g))
+
+
+    // 这是正则表达式的方法  \s表示空白，换行符/n或者空格都能匹配到
+    console.log(/\s/.test('hd'));
+
+    console.log(hd.match(/[^-\d:,\s]+/g))
+</script>

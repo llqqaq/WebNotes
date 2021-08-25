@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m多行匹配修正符</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = `
+        # js, 200元 #
+        # php, 100元 #
+        # css, 20元 #  ddr
+        # vue, 210元 #
+    `
+   let result =  hd.match(/^\s*#\s+.+\s+#$/gm).map(v => {
+        v = v.replace(/\s*#\s+/, '').replace(/\s+#/, '').replace(/\s+/, '')
+        let [name, price] = v.split(',')
+        return {name, price}
+    })
+    console.log(result);
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>转义的理解</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = 12.34
+    /**
+     * . : ①除去换行外的所有字符
+     *     ②表示点  优先级比较低，所以需要/.转义
+    */
+    console.log(/\d+\.\d+/.test(hd))
+    /** 
+     * 在字符串中使用转义，其结果跟转义一样所以 \d = d  \. = .
+     * console.log('\d' === 'd')  // true
+     * console.log('\d+\.\d+')  // d+.d+     =>   dddd@ddddd
+     * 在字符中转义 ,  . => \\.     \d => \\d
+     * console.log('\\d+\\.\\d+')  // \d+\.\d+     尽量使用字面量不要用对象
+    */
+    let reg = new RegExp('\d+\.\d+', 'g')
+    console.log(reg.test(hd));
+
+
+
+
+    console.log('--------------结构二-----------------');
+    let url1 = 'http://www.baidu.com'
+    let url2 = 'https://www.baidu.com'
+    /** 
+     * ?表示可有可无
+     * /是边界符 所以需要转义
+     * \w表示字母，数字，下划线  \w+表示一个或者多个字母,数字，下划线
+    */
+    console.log(/https?:\/\/\w+\.\w+\.\w+/.test(url1))
+    console.log(/https?:\/\/\w+\.\w+\.\w+/.test(url2))
+</script>

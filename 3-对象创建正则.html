@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用对象创建正则表达式</title>
+</head>
+<body>
+    <div class="content">
+        baidu.com
+    </div>
+</body>
+</html>
+<script>
+    console.log('----------------------结构一----------------------');
+    let hd = 'sashdjcoer'
+    let a = 's'
+    let reg = new RegExp(a, 'g')  // g是全局模式
+    console.log(reg.test(hd));
+
+    console.log('----------------------结构二----------------------');
+    let demo = 'test'
+    console.log(demo.replace('t', "m"));  
+    console.log(demo.replace(/\w/g, search => {   // 也可以用正则 
+        // console.log(search);  // 输出每一个符合匹配的字符
+        return 'm'
+    }));
+
+    console.log('----------------------结构三---------------------');
+    let divObj = document.querySelector('div')
+    let content = prompt("请输入要检测的字符，支持正则表达式")  // 类似alert，会中断后续代码
+    let reg1 = new RegExp(content, 'g')
+    divObj.innerHTML = divObj.innerHTML.replace(reg1, search => {
+        return `<span>${search}</span>`
+    })
+
+
+    
+
+    
+</script>

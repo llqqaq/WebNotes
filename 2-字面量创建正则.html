@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字面量创建正则表达式</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = 'sdagaetasfdt'
+    // 判断hd里面是否包含
+    console.log(/u/.test(hd));  // false
+    console.log(/d/.test(hd));  // true
+
+    let str = 't'
+    console.log(/str/.test(hd));  // false 这里只会把str作为字符串去匹配 而不是变量的值t
+
+    console.log(eval(`/${str}/`).test(hd)); // true   eval()把字符串变成js表达式  一般不这么写，都是直接写要匹配的字符
+</script>
