@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套分组和不记录组</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = `
+        https://www.baidu.com
+        http://baidu.com
+        https://nan.com
+    `
+    let reg = /https:\/\/\w+\.\w+\.(com|cn|cin)/i
+    console.log(hd.match(reg));
+    
+    // 提取www.baidu.com 可以用原子组包裹起来
+    // 原子组里面的 (?:)  是指不记录该组，则在后面match中不记录
+    let reg2 = /https:\/\/(\w+\.\w+\.(?:com|cn|cin))/i
+    console.log(hd.match(reg2)); 
+    console.log(hd.match(reg2)[1]); 
+
+
+    // 使用了全局匹配g  则match不记录组 不管是有无 ?:
+    let reg3 = /https?:\/\/((?:\w+\.)?\w+\.(?:com|cn|cin))/gi
+    console.log(hd.match(reg3));
+    // console.log(reg3.lastIndex);
+    // console.log(reg3.exec(hd));
+    // console.log(reg3.lastIndex);
+    // console.log(reg3.exec(hd));
+    // console.log(reg3.lastIndex); 
+    // console.log(reg3.exec(hd));
+    // console.log(reg3.lastIndex);
+    // console.log(reg3.exec(hd));
+    // console.log(reg3.lastIndex);
+    let urls = []
+    while((res = (reg3.exec(hd)))) {
+        console.dir(res);
+        urls.push(res[1])
+    }
+    console.log(urls);
+</script>

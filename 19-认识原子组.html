@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原子组</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = `<h2>www.baidu.com</h2>www.baidu.com`
+    // 原子组 \1 \2 \3
+    let reg = /<(h[1-6])>([\s\S]*)<\/\1>\2/
+    console.log(hd.match(reg));
+    /**
+     * [0] 表示匹配到的字符
+     * [1] 表示原子组的内容
+     * [2] 也表示原子组
+    */
+
+
+   let hd2 = '1----'
+   console.log(hd2.match(/\w\-+/));
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>禁止贪婪</title>
+</head>
+
+<body>
+    <div>
+        <span>例子</span>
+        <span>例子1</span>
+        <span>例子2</span>
+    </div>
+</body>
+
+</html>
+<script>
+    let hd = 'hddddd'
+    // 添加?  会让天平往少的一方靠 比如：
+    // console.log(hd.match(/hd+/));
+    // console.log(hd.match(/hd+?/));
+
+    // console.log(hd.match(/hd*/));
+    // console.log(hd.match(/hd*?/));
+
+    // console.log(hd.match(/hd{2,4}/));
+    // console.log(hd.match(/hd{2,4}?/));
+
+    // console.log(hd.match(/hd{2,}/));
+    // console.log(hd.match(/hd{2,}?/));
+
+    // console.log(hd.match(/hd?/));
+    // console.log(hd.match(/hd??/));
+
+    console.log('------------');
+    const main = document.querySelector('div')
+    const reg = /<span>([\s\S]+?)<\/span>/gi
+    main.innerHTML = main.innerHTML.replace(reg, (v, p1) => {
+        return `<p style='color: red;'>new ${p1}</p>`
+    })
+</script>

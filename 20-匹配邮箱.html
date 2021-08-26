@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匹配邮箱</title>
+</head>
+<body>
+    <input type="email" name="email" id="">
+    <span></span>
+</body>
+</html>
+<script>
+    let hd = '1181707441@qq.com'
+    let hd2 = '1181707441@qq.cn.com'
+    let reg = /^[\w-]+@[\w-]+\.(com|cn|cin)$/   
+    console.log(hd.match(reg));
+    console.log(hd2.match(reg)); // 匹配不到
+
+    let reg2 = /^[\w-]+@([\w-]+\.)+(com|cn|cin)$/  
+    console.log(hd2.match(reg2));  // ([\w-]+\.)+ 这部分结构用原子组包裹起来
+
+
+    document.querySelector('[name = "email"]').addEventListener('keyup', function() {
+        let reg = /^[\w-]+@([\w-]+\.)+(com|cn|cin)$/
+        console.log(reg.test(this.value));
+        document.querySelector('span').innerHTML = 
+        reg.test(this.value)
+        ? '正确'
+        : '错误'
+    })
+</script>
