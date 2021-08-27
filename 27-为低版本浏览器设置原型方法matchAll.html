@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配置matchAll</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = 'huoodongliebiao'
+
+    String.prototype.matchAll = function(reg) {
+        let res = this.match(reg)
+        if(res) {
+            // replace默认只替换第一个
+            let str = this.replace(res[0], '^'.repeat(res[0].length))
+            let match = str.matchAll(reg) || []
+            return [res, ...match]
+        }
+    }
+
+    hd.matchAll(/o+/i)
+
+
+    let hd1 = `
+            <h1>内容一</h1>
+            <h1>内容二</h1>
+            <h1>内容三</h1>
+        `
+    let reg = /<(h[1-6])>([\s\S]+?)<\/\1>/i
+    console.log(hd1.matchAll(reg));
+</script>

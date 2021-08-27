@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matchAll全局匹配</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    // 字符串的match不能全局匹配
+    let hd = `
+            <h1>内容一</h1>
+            <h1>内容二</h1>
+            <h1>内容三</h1>
+        `
+    let reg1 = /<(h[1-6])>([\s\S]+?)<\/\1>/i
+    console.dir(hd.match(reg1));  // 利用res[2]只能匹配到内容2，
+                                  // 如果上面加上g，就不能纪录原子组了
+    
+                                
+   // 使用正则的exec
+   let reg2 = /<(h[1-6])>([\s\S]+?)<\/\1>/ig 
+   let content2 = []
+   while(res = reg2.exec(hd)) {
+       console.dir(res);
+       content2.push(res[2])
+   }
+   console.log('content2', content2);
+
+
+   // 使用matchAll
+   let reg3 = /<(h[1-6])>([\s\S]+?)<\/\1>/ig 
+   let result = hd.matchAll(reg3)
+   let content3 = []
+   for(let item of result) {
+       content3.push(item[2])
+   }
+   console.log("content3", content3);
+
+</script>

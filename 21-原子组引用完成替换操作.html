@@ -24,6 +24,7 @@
     let reg1 = /<(h[1-6])>(\w([\s\S]+))<\/\1>/gi
     hd.replace(reg1, (val, $1, $2, $3) => {
         console.log('$1 2 3 从左到右第一个至第三个原子组');
+        console.log(val);
         console.log($1);
         console.log($2);
         console.log($3);

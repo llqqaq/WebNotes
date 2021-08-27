@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search And match</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = 'javascript'
+    console.log(hd.search('a')); // 返回第一个a的索引
+    console.log(hd.search(/a/)); // 也可以用正则，但是用了g好像也不能匹配全局的a？
+
+
+    let hd1 = `
+            https://www.baidu.com
+            http://sina.com.cn
+            https://7724.com
+        `
+    let reg = /https?:\/\/(\w+\.)?(\w+\.)+(com|cn|org|cc)/g
+    console.dir(hd1.match(reg));
+
+
+
+    let date = '2021-10/10'
+    console.log(date.split(/[-\/]/));
+    let date1 = '2021年10月10日'
+    console.log(date1.split(/\p{sc=Han}/u));
+</script>

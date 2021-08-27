@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$在正则中的替换</title>
+</head>
+<body>
+    <h1>点击Helloworld</h1>
+</body>
+</html>
+<script>    
+    let hd = `(021)99999999 (025)00999999`
+
+    let reg = /\((\d{3,4})\)(\d{7,10})/g
+    // console.log(hd.match(reg));
+    // let result = hd.replace(reg, (v, $1, $2) => {
+    //     return `${$1}-${$2}`
+    // })
+    // $1 第一个原子组
+    let result = hd.replace(reg, "$1-$2")
+    console.log(result);
+
+    let demo = 'ddemo1'
+    console.log(demo.replace(/e/, "$&")); // $&是匹配的字符
+    console.log(demo.replace(/e/, "$`")); // $`是匹配字符的左边所有内容
+    console.log(demo.replace(/e/, "$'")); // $`是匹配字符的右边所有内容
+
+    let h1 = document.querySelector('h1')
+    h1.innerHTML = h1.innerHTML.replace(/helloworld/gi, "<a href='https://www.baidu.com/'>$&</a>")
+</script> 
