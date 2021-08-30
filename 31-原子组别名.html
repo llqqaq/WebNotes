@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原子组别名</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let hd = `
+            <h1>这是内容</h1>
+            <span>demo</span>
+            <h2>liqin</h2>
+        `
+    let reg = /<(h[1-6])>(.*?)<\/\1>/ig
+    console.log(hd.replace(reg, '$2'))
+
+
+    // 给原子组别名
+    let reg1 = /<(h[1-6])>(?<con>.*?)<\/\1>/ig
+    console.log(hd.replace(reg1, '设置了别名$<con>'))
+</script>

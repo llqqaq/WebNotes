@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>断言</title>
+</head>
+<body>
+    <h1>这是需要改的内容 这是需要改的内容这里</h1>
+    <h2>这是需要改的内容 这是需要改的内容这里</h2>
+</body>
+</html>
+<script>
+    let h1 = document.querySelector('h1')
+    let reg = /内容/g
+    h1.innerHTML = h1.innerHTML.replace(reg, '<a href="https:www.baidu.com">$&</a>')
+
+    let h2 = document.querySelector('h2')
+    // 断言 指定后面的内容匹配
+    let reg1 = /内容(?=这里)/g
+    h2.innerHTML = h2.innerHTML.replace(reg1, '<a href="https:www.baidu.com">$&</a>')
+
+
+    // 规范price价格
+    // 1.slice(start,end)：方法可从已有数组中返回选定的元素，返回一个新数组，包含从start到end（不包含该元素）的数组元素。
+    // 2.splice()：该方法向或者从数组中添加或者删除项目，返回被删除的项目。（该方法会改变原数组）
+    let price = `
+            js 100.00元
+            java 300元
+            demo 400元
+        `
+    let reg2 = /(\d+)(.00)?(?=元)/gi
+    price = price.replace(reg2, (v, ...arg) => {
+        console.log(arg);
+        arg[1] = arg[1] || '.00'
+        return arg.splice(0, 2).join('')
+    })
+    console.log(price);
+</script>

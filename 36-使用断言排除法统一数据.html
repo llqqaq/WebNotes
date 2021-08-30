@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>统一数据</title>
+</head>
+<body>
+    <a href="https://www.houdunren.com/">1</a>
+    <a href="https://oss.houdunren.com/">2</a>
+    <a href="https://cdn.houdunren.com/">3</a>
+    <a href="https://houdunren.com/">4</a>
+</body>
+</html>
+<script>
+    let main = document.body
+    // 前断言 
+    let reg = /https:\/\/([a-z]+)?(?<!oss)\..+?(?=\/)/g
+    main.innerHTML.replace(reg, (v, ...arg) => {
+        console.log(v);
+        console.dir(arg);
+    })
+</script>

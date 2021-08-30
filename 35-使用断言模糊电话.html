@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模糊电话</title>
+</head>
+<body>
+    <input type="text">
+</body>
+</html>
+<script>
+    let phone = `
+            11812141412.com
+            125134643.com
+        `
+    let reg = /\d{4}(?=\.)/g
+    console.log(phone.match(reg));
+    reg = phone.replace(reg, '****')
+    console.log(reg);
+
+    /**
+     * 断言
+     * ?<=  前条件
+     * ?= 后条件---满足
+     * ?!不满足
+     * ?<!
+    */
+
+    // 输入的字符不允许出现林
+    let input = document.querySelector('input')
+    input.addEventListener('keyup', function() {
+        let val = this.value
+        let reg1 = /^(?!.*lin.*)/
+        console.log(reg1.test(val));
+        let reg = /^(?!.*林.*)[a-z]{4,5}$/
+        console.dir(val.match(reg));
+    })
+
+</script>

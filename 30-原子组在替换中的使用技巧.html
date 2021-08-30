@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原子组在替换中的使用技巧</title>
+</head>
+<body>
+    <div class="main">
+        <a  href="http://www.baidu.com">百度</a>
+        <a  href="http://www.yahu.com">百度</a>
+        <a href="http://baidu.com">demo</a>
+    </div>
+</body>
+</html>
+<script>
+    let main = document.querySelector('.main')
+    // let reg = /(<a.*href=["'])(http)(:\/\/)(www\.)?(baidu|baidu1)/g
+    // main.innerHTML = main.innerHTML.replace(reg, (v, ...arr) => {
+    //     console.dir(arr);
+    //     arr[1] = arr[1] + 's'
+    //     arr[3] = arr[3] || 'www.'
+    //     let result = arr.splice(0, 5).join('')
+    //     console.log(result);
+    //     return result
+    // })
+
+
+    console.log('-------获取链接---------');
+    let result = []
+    let reg1 = /<a.*?href=['"](?<link>.*?)['"]>(?<title>.*?)<\/a>/ig
+    for(let item of main.innerHTML.matchAll(reg1)) {
+        console.dir(item);
+        result.push(item.groups)
+    }
+    console.log(result);
+</script>
