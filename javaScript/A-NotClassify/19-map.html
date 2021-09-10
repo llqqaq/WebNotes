@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let arr = [
+        {
+            title: 1,
+            id: 2
+        },
+        {
+            title: 2,
+            id: 3
+        }
+    ]
+    // 遍历然后返回一个新数组
+    console.log(arr.map(item => {
+        item.title = 115
+        item.demo = 2
+        return item
+    }));
+    console.log('原数组发生改变', arr); 
+
+    let arr1 = [
+        {
+            title: 1,
+            id: 2
+        },
+        {
+            title: 2,
+            id: 3
+        }
+    ]
+    console.log(arr.map(item => {
+        // Object.assign 拼接对象，不改变原对象
+        return Object.assign({ click: 100 }, item)
+    }));
+    console.log('原数组不发生改变', arr); 
+</script>

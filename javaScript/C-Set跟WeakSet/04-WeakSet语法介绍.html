@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeakSet</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+</body>
+</html>
+<script>
+    // 只能添加引用类型，通过add添加
+    let set = new WeakSet()
+    set.add(['demo', 'demo1'])
+    console.log(set);
+
+
+
+    let nodes = new WeakSet()
+    document.querySelectorAll('div').forEach(item => {
+        nodes.add(item)
+    })
+    console.log(nodes);
+    nodes.delete('1')
+    nodes.has('1')
+</script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延长函数生命周期</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /** 
+     * demo函数被调用，才在内存中开辟一块空间
+     * 调用结束 则该空间就被清理
+     * 那如何让函数不被清理？
+    */
+   function demo() {}
+
+   function show() {
+       let n = 0
+       function outPut() {
+           console.log(++n);
+       }
+       outPut()
+   }
+   show() // 执行完， show开辟的内存空间马上被清理
+
+   function show1() {
+       let n = 0
+       return function outPut() {
+           console.log(++n);
+       }
+   }
+   let a = show1()  
+   a() // n=1 这里show1内存空间里面的outPut被引用，所以该内存不会被清理
+   a() // n=2 每调用一次 n++
+
+
+   function show2() {
+       let n = 0
+       return function outPut() {
+           let m = 0
+           function show() {
+               console.log(++m);
+           }
+           show()
+       }
+   }
+   let a2 = show2()  
+   a2() // m=1 这里返回的是outPut  没调用一次，就生成新的空间，m初始值一直为0
+   a2() // m=1
+
+   function show3() {
+       let n = 0
+       return function outPut() {
+           let m = 0
+            return function show() {
+               console.log(++m);
+           }
+       }
+   }
+   let a3 = show3()()
+   a3() // m=1
+   a3() // m=2
+
+
+
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function PublicFun() {
+        this.getUrl = function (params) {
+            let url = Object.keys(params).map(k => `${k}=${params[k]}`).join('&')
+            url = `${this.url}?${url}`
+            console.log(url);
+        }
+    }
+
+    function Article() {
+        this.url = 'https://www.baidu.com'
+        // 使用call,把当前this传递过去，改变PublicFun的this
+        PublicFun.call(this)
+    }
+
+    function User() {
+        this.url = 'https://www.baidu.com'
+        PublicFun.apply(this)
+    }
+
+    new Article().getUrl({
+        name: 'lq',
+        id: 18
+    })
+    new User().getUrl({
+        name: 'lq',
+        id: 18
+    })
+</script>

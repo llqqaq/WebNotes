@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解决字符串耦合问题</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let grade = {
+        "李四": {js:100, css:30},
+        "李四": {js:80, css:40}
+    }
+
+    console.log(grade);  // 第一个李四被覆盖
+
+
+    let user1 = '李四'
+    let user2 = '李四'
+    let grade1 = {
+        [user1]: {js:100, css:30},
+        [user2]: {js:80, css:40}
+    }
+    console.log(grade1);  // 同上
+
+    let user3 = {
+        name: '李四',
+        key: Symbol()
+    }
+
+    let user4 = {
+        name: '李四',
+        key: Symbol()
+    }
+    let grade3 = {
+        [user3.key]: {js:100, css:30},
+        [user4.key]: {js:80, css:40}
+    }
+    console.log(grade3); 
+</script>

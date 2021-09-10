@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>借用</title>
+</head>
+<body>
+    <button class="demo">1</button>
+    <button class="demo1">1</button>
+</body>
+</html>
+<script>
+    // 伪数组使用数组方法
+    let btns = document.querySelectorAll('button')
+    // btns.forEach(item => {
+    //     console.log(item);
+    // })
+    console.dir(Array);
+    console.log(Array.prototype.filter.call(btns, item => {
+        return item.classList.contains('demo')
+    }));
+</script>

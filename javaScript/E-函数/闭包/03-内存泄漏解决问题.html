@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内存泄漏</title>
+</head>
+
+<body>
+    <button name='btn'>按钮1</button>
+    <button name='btn2'>按钮2</button>
+    <div name='div1'>demo1</div>
+    <div name='div2'>demo2</div>
+</body>
+
+</html>
+<script>
+    document.querySelectorAll('button').forEach(item => {
+        item.addEventListener('click', function () {
+            console.log(item.getAttribute('name'));
+        })
+    })
+    // 清楚item
+    document.querySelectorAll('div').forEach(item => {
+        let desc = item.getAttribute('name')
+        item.addEventListener('click', function () {
+            desc += '22'
+            console.log(desc);
+            console.log(item);
+        })
+        item = null
+    })
+</script>

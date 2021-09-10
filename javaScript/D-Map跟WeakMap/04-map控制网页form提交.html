@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form表单的操作</title>
+</head>
+<body>
+    <form action="" onsubmit="return post()">
+        <input type="checkbox" error='需要勾选协议'>请勾选协议
+        <input type="checkbox" error='需要勾选用户名'>请勾选用户名
+        <button>提交</button>
+    </form>
+</body>
+</html>
+<script>
+    function post() {
+        let map = new Map()
+        document.querySelectorAll('[error]').forEach(item => {
+            map.set(item, {
+                error: item.getAttribute('error'),
+                status: item.checked
+            })
+        })
+        let res =  [...map].every(([elem, config]) => {
+            config.status || alert(config.error)
+            return config.status
+        })
+        return res
+    }
+</script>

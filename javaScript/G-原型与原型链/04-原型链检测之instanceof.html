@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instanceof</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let A = function () {}
+    let B = function () {}
+    let a = new A()
+    console.log(a instanceof A); // 判断a的原型是不是A.prototype
+    // console.log(a.__proto__ === A.prototype); //true
+    // console.log(a instanceof Object);
+
+    let arr = []
+    let obj = {}
+    console.log(arr.__proto__ === Array.prototype);
+    console.log(Array.prototype.__proto__ === Object.prototype);
+    console.log(arr instanceof Object);  // a的原型 是Array Array的原型是Object，所以这里返回true
+    console.log(obj instanceof Object);
+</script>

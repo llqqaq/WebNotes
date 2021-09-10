@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let a = [1, 2, 3, 4, 5]
+    console.log(a.find(item => item === 2)); // 返回满足条件的元素,找不到返回undefined
+    console.log(a.findIndex(item => item === 2)); // 返回满足条件的元素的下标,找不到返回-1
+
+
+
+
+    // 手写find方法
+    function find(arr, callback) {
+        for (const value of arr) {
+            if (callback(value)) {
+                return value
+            }
+        }
+        return undefined
+    }
+    console.log(find(a, item => item === 5));
+
+
+    // 使用原型方法
+    Array.prototype.findValue = function find(callback) {
+        for (const value of this) {
+            if (callback(value)) {
+                return value
+            }
+        }
+        return undefined
+    }
+    console.log(a.findValue(item => item === 3));
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排序</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let a = [12, 2, 31, 4, 25]
+    console.log(a.sort((a, b) => a - b)); // 从小到大排序  数组发生改变
+    
+
+    let b = a.sort((a, b) => b - a) // 从大到小
+    console.log(b);
+    console.log(a);
+    console.log('-----手写排序-------');
+    // 手写
+    function sortArray(arr, callback) {
+        for(const n in arr) {
+            for(const m in arr) {
+                if(callback(arr[n], arr[m]) < 0) {
+                    let temp = arr[n]
+                    arr[n] = arr[m]
+                    arr[m] = temp
+                }
+            }
+        }
+    }
+    sortArray(a, (a, b) => a-b)
+    console.log(a);
+</script>

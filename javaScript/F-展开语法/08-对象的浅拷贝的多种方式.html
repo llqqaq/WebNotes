@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浅拷贝</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 浅拷贝： 不能对深层次的属性进行赋值，只能赋址,这样一来引用属性的值改变了，拷贝的对象也会发生改变
+    let user = {
+        username: 'lq',
+        lessions: {
+            title: '1'
+        }
+    }
+    // for in
+    // assign
+    let a = Object.assign({}, user)
+    // 展开语法
+    let b = {...user}
+</script>

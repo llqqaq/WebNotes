@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>选择符的使用</title>
+    <title>变量冻结</title>
 </head>
 <body>
     
 </body>
 </html>
+
 <script>
-    let phone = "210-11000023ddd"
-    /**
-     * |: 或者
-     * -： \-
-     * 数字： \d 代表数字0-9   \d+ 代表一个或多个数字
-    */
-    console.log(/(210|232)\-\d{7,8}/.test(phone));
+    // 'use strict'
+    const Host = {
+        url: '...',
+        port: 110
+    }
+
+    Object.freeze(Host)
+    Host.port = 80  // 冻结变量 这里无效，在严格模式下回报错
+    console.log(Host);
+
+
 </script>

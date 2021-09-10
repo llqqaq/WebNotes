@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在缓存容器(公共)中使用</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    class Cache {
+        static data = {}
+        static set = function (user, value) {
+            this.data[user] = value
+        }
+        static get = function (user) {
+            return this.data[user]
+        }
+    }
+    let user = {
+        name: 'apple',
+        key: Symbol()
+    }
+    let cart = {
+        name: 'apple',
+        des: '购物车',
+        key: Symbol()
+    }
+    // Cache.set('apple', user)
+    // Cache.set('apple', cart)
+    // console.log(Cache.get('apple')); 这样被覆盖
+
+    Cache.set(user.key, user)
+    Cache.set(cart.key, cart)
+    console.log(Cache.get(cart.key)); // symbol生成一个永远不会重复的数字或者字符串
+                                      // 如果量少的话 直接可以用user-apple  cart-apple 命名
+                                      // 但是如果很多人协同合作，有可能命名就重复了，那么用symbol是一定不会重复的
+</script>

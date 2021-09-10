@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展开语法</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // ...在右边是展开
+    let zz = [1, 2, 3, 4]
+    let [a, b, c, d] = [...zz]
+    console.log(a, b, c, d); // 1, 2, 3, 4 
+    // ...在左边是收起
+    let [...edu] = [1, 2, 3, 4]
+    console.log(edu); // [1, 2, 3, 4]
+    let [a1, ...edu1] = [1, 2, 3, 4]
+    console.log(a1, edu1); // 1, [2, 3, 4]
+
+    
+</script>

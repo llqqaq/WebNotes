@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访问器</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let user = {
+        data: {
+            name: 'lq',
+            age: 18
+        },
+        age: 12,
+        set age(value) {
+            if (typeof value !== "number" || value < 10 || value > 100) {
+                throw new Error('年龄要求不对')
+            }
+            this.data.age = value
+        },
+        get age() {
+            return this.data.age + '岁'
+        }
+    }
+    // user.age = 9 // 报错
+    user.age = 19
+    console.log(user.age);
+
+
+    let lession = {
+        course: [{
+                name: 'js',
+                price: 1988
+            },
+            {
+                name: 'js',
+                price: 1988
+            },
+            {
+                name: 'js',
+                price: 1988
+            },
+            {
+                name: 'js',
+                price: 1988
+            }
+        ],
+        get total() {
+            return this.course.reduce((t, l) => t + l.price, 0)
+        }
+    }
+    console.log(lession.total);
+
+
+    // 使用访问器批量设置属性
+    let web = {
+        name: '百度',
+        url: 'www',
+        set site(value) {
+            value = value.split(',')
+            console.log(value);
+            [this.name, this.url] = value
+        },
+        get site() {
+            return `${this.name}, ${this.url}`
+        }
+    }
+    web.site = "谷歌, www.7724"
+    console.log(web.site);
+</script>

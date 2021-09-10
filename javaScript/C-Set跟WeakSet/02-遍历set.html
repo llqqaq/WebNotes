@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="keyword">
+    <ul></ul>
+</body>
+</html>
+<script>
+    let set = new Set(['demo1', 'demo2'])
+    // 遍历
+    for(let key of set) {
+        console.log(key);
+    }
+    // set.forEach((item, index, set) => {
+    //     console.log(item);
+    //     console.log(index);
+    //     console.log(set);
+    // })
+
+
+    // 添加关键词 不能重复
+    let obj = {
+        word: new Set(),
+        set keyword(word) {
+            this.word.add(word)
+        },
+        show: function() {
+            let ul = document.querySelector('ul')
+            ul.innerHTML = ''
+            this.word.forEach(item => {
+                ul.innerHTML += `<li>${item}</li>`
+            })
+        }
+    }
+    document.querySelector('[name="keyword"]')
+            .addEventListener('blur' , function() {
+                obj.keyword = this.value  // 这样使用是因为前面有个set，去掉set就用obj.keyword(this.value)
+                obj.show()
+            })
+</script>

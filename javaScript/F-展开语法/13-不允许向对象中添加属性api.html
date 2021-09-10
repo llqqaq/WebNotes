@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let user = {
+        name: 'lq',
+        age: 18
+    }
+    // 不允许向对象添加属性
+    Object.preventExtensions(user)
+
+    // 判断是否允许向对象添加属性
+    if(Object.isExtensible(user)) {
+        console.log(true);
+        user.extent = '拓展'
+    } else {
+        console.log(false);
+    }
+</script>

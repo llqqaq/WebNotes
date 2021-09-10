@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理dom</title>
+</head>
+<body>
+    <div name='天辰的风'>第一行</div>
+    <div name='晚风'>第二行</div>
+</body>
+</html>
+<script>
+    let map = new Map()
+    document.querySelectorAll('div').forEach(item => {
+        map.set(item, {
+            content: item.getAttribute('name')
+        })
+    })
+    console.log(map);
+    map.forEach((config, elem) => {
+        elem.addEventListener('click', function() {
+            alert(config.content)
+        })
+    })
+</script>

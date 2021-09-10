@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包</title>
+    <style>
+        button {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button>按钮</button>
+    <button>按钮1</button>
+</body>
+</html>
+<script>
+
+    document.querySelectorAll('button').forEach(item => {
+        item.addEventListener('click', function() {
+            let left = 1
+            setInterval(() => {
+                item.style.left = left++ + 'px'
+            }, 100);
+        })
+    })
+</script>

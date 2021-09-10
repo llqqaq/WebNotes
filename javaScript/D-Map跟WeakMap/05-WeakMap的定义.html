@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeakMap</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // WeakMap 跟 WeakSet一样，这里的key只能是引用类型
+    let map = new WeakMap()
+    // map.set('demo', '1') // 报错
+    let arr = []
+    map.set(arr, '1')
+    map.delete(arr)
+    console.log(map.has(arr)); // false
+    console.log(map);  // {}
+
+    /**
+     * 弱引用类型
+     * 同样不能遍历 
+     * 不能size 
+     * 不能map.keys() values 
+     * 不能for of
+    */
+</script>

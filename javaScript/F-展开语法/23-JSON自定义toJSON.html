@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let user = {
+        title: '标题',
+        name: '名字',
+        age: 19,
+        // 自定义返回的内容
+        toJSON: function() {
+            return {
+                title: this.title
+            }
+        }
+    }
+    console.log(JSON.stringify(user)); // {"title":"标题"}
+</script>

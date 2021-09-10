@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isPrototypeOf</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let a = {}
+    let b = {}
+    // a.__proto__ == b 则为true
+    Object.setPrototypeOf(a, b)
+    console.log(a.__proto__ == b);
+    console.log(b.isPrototypeOf(a)); // 判断b是不是a原型链上的一部分，即为a的上级
+
+</script>

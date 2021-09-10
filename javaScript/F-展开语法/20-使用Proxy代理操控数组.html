@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操控数组</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let arr = [
+        {
+            title: '这是内容这是内容这是内容'
+        },
+        {
+            title: '这是内容这是内容这是内容'
+        },
+        {
+            title: '这是内容这是内容这是内容'
+        },
+        {
+            title: '这是内容内容'
+        }
+    ]
+    let proxy = new Proxy(arr, {
+        get(arr, key) {
+            console.log(arr, key);
+            let title = arr[key].title
+            const length = 10
+            arr[key].title = title.length > 10 ? title.substr(0, 10) + '...' : title
+            return arr[key]
+        }
+    })
+    console.log(proxy[1]);
+</script>

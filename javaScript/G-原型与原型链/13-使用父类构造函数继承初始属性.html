@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用父类构造函数继承初始属性</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function User(name, age) {
+        this.name = name
+        this.age = age
+    }
+    User.prototype.show = function() {
+        console.log('show');
+    }
+    function Li(name, age) {
+        // 使用call
+        User.call(this, name, age)
+    }
+    function Qin(...arg) {
+        // 使用apply
+        User.apply(this, arg)
+    }
+    
+
+    // 继承User.prototype
+    Li.prototype = Object.create(User.prototype)
+    Object.defineProperty(Li.prototype, 'constructor', {
+        value: Li,
+        enumerable: false
+    })
+
+    let a = new Li('lq', 18)
+    console.log(a);
+    a.show() 
+</script>

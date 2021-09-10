@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            text-align: center;
+            margin-top: 100px;
+        }
+        ul li {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 30px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        ul li.move {
+            animation-name: move;
+            animation-duration: .5s; 
+            animation-iteration-count: 2;
+            animation-timing-function: linear;
+            animation-direction: alternate;
+        }
+        @keyframes move{
+            0% {
+                color: blue;
+                transform: scale(2);
+            }
+            100%{
+                color: yellow;
+                transform: scale(.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+</body>
+</html>
+<script>
+    document.querySelectorAll('li').forEach(item => {
+        item.addEventListener('mouseover', function() {
+            this.classList.add('move')
+        })
+        item.addEventListener('animationend', function() {
+            this.classList.remove('move')
+        })
+    })
+</script>

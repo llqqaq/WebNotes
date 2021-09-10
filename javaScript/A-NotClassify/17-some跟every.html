@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>some\every</title>
+</head>
+<body>
+    <input type="text" name="username" id="">
+</body>
+</html>
+<script>
+    let arr = [1, 2, 3, 4]
+    // 只要满足一个就返回true
+    const status1 = arr.some(item => item > 3)
+    console.log(status1);
+
+    // 必须全部满足才会返回true，否则返回false
+    const status2 = arr.every(item => item >3) 
+    console.log(status2);
+
+    let keywords = ['js', 'css']
+    document.querySelector("[name='username']").addEventListener('keyup', function() {
+        const status = keywords.every(item => this.value.indexOf(item) !== -1 )
+        console.log(status);
+    })
+
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象中的symbol</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let user = Symbol('这是一个symbol')
+    let obj = {
+        title: '对象',
+        [user]: '用户'
+    }
+    console.log(obj[user]); // 可以输出
+    for (let key in obj) {
+        console.log(key); // 只能输出title， 
+        // [user]是一个symbol类型，可以理解为私有属性，外部获取不到
+    }
+    // Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组,数组中属性名的排列顺序和使用 for...in 循环遍历该对象时返回的顺序一致 。
+    for (let key of Object.keys(obj)) {
+        console.log(key); // 也只能输出title
+    }
+
+    for (let key of Object.getOwnPropertySymbols(obj)) {
+        console.log(key); // 只能输入symbol属性，   Symbol('这是一个symbol')
+    }
+    for (let key of Reflect.ownKeys(obj)) {
+        console.log(key); // title,Symbol('这是一个symbol')
+    }
+
+
+    let site = Symbol('这是一个symbol')
+    class User {
+        constructor(username) {
+            this.username = username
+            this[site] = 'dddd'
+        }
+        getName() {
+            return `${this[site]} ${this.username}`
+        }
+    }
+    let userObj = new User('liqin')
+    console.log(userObj.getName());
+    for (let key in userObj) {
+        console.log(key); // 只能获取到username属性， [site]symbol属性被保护起来获取不到
+    }
+
+
+
+    console.log('---------object.keys()--------------');
+    var keyList = {
+        'name': 'xiaoming',
+        'age': 18,
+        "fun": function() {}
+    };
+    console.log(Object.keys(keyList)); // ["name","age"]
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历和dom操作</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let lq = {
+        username: 'lq',
+        age: 18
+    }
+    console.log(Object.keys(lq)); // keys数组
+    console.log(Object.values(lq)); // value数组
+    console.log(Object.entries(lq)); // 二位数组
+    // 使用for in遍历
+    // for of没办法遍历不具备迭代属性的对象
+    for(let key of Object.keys(lq)) {
+        console.log(key);
+    }
+    for(let value of Object.values(lq)) {
+        console.log(value);
+    }
+    for(let arr of Object.entries(lq)) {
+        console.log(arr);
+    }
+</script>

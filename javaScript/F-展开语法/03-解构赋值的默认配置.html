@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>默认</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    let arr = ['demo1', 'demo2']
+    let [a, b, c='demo3'] = arr
+    console.log(a, b, c);
+
+    let user = {
+        username: 'lq',
+        age: 18
+    }
+    let { username, age, top1 = 175 } = user
+    console.log(username, age, top1);
+
+
+    function fun(params) {
+        if(!params) params = {}
+        let {width = '100px', height = '200px', bgc = 'red'} = params
+        console.log('默认赋值', width, height, bgc);
+    }
+    fun()
+
+
+    // 使用技巧
+    function lq(username, { age, top1 }) {
+        console.log('部分解构赋值', username, age, top1);
+    }
+    lq('lq', { age: 18, top1: 175 })
+</script>

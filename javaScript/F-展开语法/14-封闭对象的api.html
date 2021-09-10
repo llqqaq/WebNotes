@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封闭</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    'use strict'
+    let lq = {
+        username: 'lq',
+        age: 18
+    }
+    // 将对象进行封闭，不能添加，删除，修改，不能重新定义特征
+    Object.seal(lq)
+
+    console.log(
+       JSON.stringify(Object.getOwnPropertyDescriptors(lq), null, 2) 
+    );
+    // 判断对象是否处于封闭状态
+    if(!Object.isSealed(lq)) {
+        lq.username = 'demo'
+    } 
+    console.log(lq);
+
+    // 冻结，作用跟seal一样,关闭的话只能注释代码
+    Object.freeze(lq)
+    console.log(Object.isFrozen(lq));
+</script>

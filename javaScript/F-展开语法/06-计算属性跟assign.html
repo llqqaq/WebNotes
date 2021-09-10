@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性跟assign</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let lessions = [
+        {
+            title: '标题1',
+            category: '类型1'
+        },
+        {
+            title: '标题2',
+            category: '类型2'
+        },
+        {
+            title: '标题3',
+            category: '类型3'
+        }
+    ]
+    let obj =  lessions.reduce((obj, cur, index) => {
+        obj[`${cur.category}-${index+1}`] = cur
+        return obj
+    }, {})
+    console.log(JSON.stringify(obj, null, 2));
+
+
+    // assign 拼接对象
+    let obj1 = {
+        title: '标题'
+    }
+    let obj2 = {
+        name: '名字'
+    }
+    console.log(Object.assign(obj1, obj2));
+    console.log({...obj1, ...obj2});
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>替换</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let keyword = ['js', 'css']
+    let str = '这是要显示的js跟css'
+    // str 作为第一个参数传递给pre,之后的return内容为pre的新值  item是数组的每一个值，  最后返回pre的值
+    let replaceString =   keyword.reduce((pre, item) => pre.replace(item, `<a href=''>${item}</a>`), str)
+    console.log(replaceString);
+    document.body.innerHTML += replaceString
+</script>

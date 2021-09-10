@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制函数</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function factorial(num) {
+        return num === 1 ? 1 : num * factorial(--num)
+        //    if(num === 1) {
+        //        return 1
+        //    }
+        //    let res = num * factorial(--num)
+        //    return res
+    }
+
+    let proxy = new Proxy(factorial, {
+        apply(func, obj, args) {
+            console.log(func);
+            console.log(obj);
+            console.log(args);
+            let total = func.apply(this, args)
+            console.log(total);
+        }
+    }) 
+    proxy.apply({}, [10])
+</script>

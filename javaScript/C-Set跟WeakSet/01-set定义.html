@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // Set类型里面的值不允许有重复
+    let set = new Set()
+    set.add(1)
+    set.add('1') // 不会覆盖，在对象中{1: **}再定义一个key为'1'的则会覆盖
+    console.log(set); // {1, '1'}
+    console.log(set.values()); // 获取内容
+    console.log(new Set([1, 2, 3])); // {1, 2, 3}
+    console.log(set.delete('1')); // true   如果没有该元素则返回false
+    console.log(set.size); // 长度 1
+    console.log(set.clear()); // 清空操作，返回undefined
+    console.log(set.has(1)); // 判断是否有该元素 fales，因为上面清空了
+
+    console.log('----------------------');
+    // 将set类型转化为数组
+    let lq = new Set('123456')
+    console.log('转换前', lq);
+    console.log('转换后', Array.from(lq));
+    console.log('转换后', [...lq]);
+    // 类型互相转换，移除大于四的部分
+    let res = [...lq].filter(item => item < 4)
+    lq = new Set(res)
+    console.log('移除后', lq);
+
+    // 经典数组去重，利用Set类型里面不能重复
+    let arr = [1, 2, 3, 43, 523, 1, 23, 43, 2]
+    let tempSet = new Set(arr) // 去重完毕
+    // arr = [...tempSet]
+    arr = Array.from(tempSet)
+    console.log('去重完', arr);
+
+</script>

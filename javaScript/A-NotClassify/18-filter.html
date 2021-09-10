@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter过滤器</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let  a = [1, 2, 3, 4, 5]
+    console.log(a.filter(item => {
+        return item >3
+    }));
+
+
+    // 手写过滤函数
+    function filterArr(arr, callback) {
+        let res = []
+        arr.forEach(item => {
+            if(callback(item)) {
+                res.push(item)
+            }
+        })
+        return res
+    }
+    console.log(filterArr(a, item => item>3));
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的属性特征</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let user = {
+        name: 'lq',
+        age: 18
+    }
+    /**
+     * 获取对象属性的特征
+     * value: 属性值
+     * writable： 是否可写
+     * enumerable： 是否可以被遍历
+     * configurable: 是否可以被配置，也就是修改删除
+     */
+    // 查询单个属性
+    console.log(
+        JSON.stringify(Object.getOwnPropertyDescriptor(user, "name"), null, 2)
+    );
+    // 查询所有属性
+    console.log(
+        JSON.stringify(Object.getOwnPropertyDescriptors(user), null, 2)
+    );
+
+
+    // 灵活控制控制属性的特征
+    // Object.defineProperty(user, 'name', {
+    //     value: '林',
+    //     writable: false,
+    //     enumerable: false,
+    //     configurable: false
+    // })
+    Object.defineProperties(user, {
+        name: {
+            value: '林',
+            writable: false,
+            enumerable: false,
+            configurable: false
+        }
+    })
+    console.log('更改后', user);
+    user.name = '11' // 这里操作失败，writable为false，不允许写，在严格模式下报错
+    console.log(Object.keys(user)); // ['age']  name属性不允许遍历，所以没有被筛选出来
+    delete user.name // 这里操作失败，configurable为false，不允许删除，在严格模式下报错
+    console.log(user);
+</script>

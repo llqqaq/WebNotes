@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增删</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let user = {}
+    user.name = 'lq'
+    user['paw'] = 123
+    console.log(user);
+    // 删除
+    delete user.paw
+    console.log(user);
+    // 判断对象是否有该属性
+    console.log(user.hasOwnProperty('name'));
+    console.log(user.hasOwnProperty('paw'));
+</script>

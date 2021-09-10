@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>检测</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let arr = [1, 2, 3]
+    console.log(arr.hasOwnProperty(1));
+    console.log(arr.hasOwnProperty('concat'));  // 不能查原型上的属性
+
+    console.log('concat' in arr);  // 这个可以查找， true
+
+    let a = {
+        name: 'lq'
+    }
+    let b = {
+        url: 'www'
+    }
+    // 设置a的原型是b
+    Object.setPrototypeOf(a, b)
+ 
+    console.log(a.hasOwnProperty("url")); // false
+    console.log('url' in a); // true
+</script>

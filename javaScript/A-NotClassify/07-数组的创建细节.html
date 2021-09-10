@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let arr1 = [1]
+    arr1[4] = 3   // 索引为 1 2 3 的为空
+    console.log(arr1);
+
+    let arr2 = new Array(6)
+    let arr3 = new Array(6, 5)
+    console.log(arr2); // 6个empty  缺陷
+    console.log(arr3); // [6 , 5]
+
+    // 修复缺陷
+    let arr4 = Array.of(6)
+    console.log(arr4); // [6]
+
+
+
+    // 检测是否数组
+    let arr5 = [1, 2, 3]
+    console.log(Array.isArray(arr5));
+    console.log(arr5 instanceof Array);
+    console.log(typeof arr5); // 输出对象
+
+
+    // 使用from可以将字符串或者对象转化成数组
+    let str = 'demo'
+    let obj1 =  {
+        demo: '1'
+    }
+    console.log(str.split(''));
+    console.log(Array.from(str)); // the same 
+    console.log(Array.from(obj1));  // 输出[],因为对象跟字符串得有length属性才能转
+    let obj2 = {
+        0: "1",
+        length: 1
+    }
+    console.log(Array.from(obj2));
+
+    // 使用document获取元素组的时候，伪元素 
+    // 可以使用Array.from(dom)转化成数组再遍历
+    // 可以[...dom] 转化成数组再遍历
+    // 或者使用forEach直接进行遍历
+
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类型转换</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let map = new Map([['name', '名字'], ['number', '1']])
+    console.log(map);
+    console.log([...map]);  // 键值一起转换成数组
+    console.log([...map.entries()]); // 同上
+    console.log([...map.keys()]);  // 键转化成数组
+    console.log([...map.values()]);  // 值转化成数组
+
+    console.log('----------');
+
+    // 获取集合里面的 名字
+    let res =  [...map].filter(item => {
+        // console.log(item); // 两个数组
+        return item[1].includes('名字')
+    })
+    console.log(res);
+    let newMap = new Map(res)
+    console.log(...newMap.values());
+</script>

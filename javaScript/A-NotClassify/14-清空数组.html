@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>选择符的使用</title>
+    <title>清空数组</title>
 </head>
 <body>
     
 </body>
 </html>
 <script>
-    let phone = "210-11000023ddd"
-    /**
-     * |: 或者
-     * -： \-
-     * 数字： \d 代表数字0-9   \d+ 代表一个或多个数字
-    */
-    console.log(/(210|232)\-\d{7,8}/.test(phone));
+    let a = [1, 2, 3]
+    let b = a
+    // 清空
+    a = []   // 另外开辟空间[], b不受影响
+    a.length = 0  // b受影响
+    a.splice(0) // b受影响
+    while(a.pop()) {} // b受影响
 </script>

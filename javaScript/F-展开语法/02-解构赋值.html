@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+   
+    let user = {
+        username: 'lq',
+        age: 18,
+        show() {
+            return this.username
+        },
+        strict: '严格'
+    }
+
+
+    // 解构赋值
+    // 把strict属性赋值给newStrict新变量
+    let { username, age, show, strict: newStrict } = user
+    console.log(username, age, show, newStrict);
+    console.log(show.call(user));
+
+    function fun({name, age}) {
+        console.log('函数传参的解构赋值', name, age);
+    }
+    fun({name: 'lq', age: 18})
+
+    let { random } = Math
+    console.log('获取随机数', random());
+
+
+
+    // 多层对象的解构
+    let user1 = {
+        username1: 'lq',
+        lessions: {
+            title: 'javascript'
+        }
+    }
+    /**
+     * 首先把 { title: 'javascript' } 赋值给 { title }
+     * title 就获取被赋值 javascript
+    */
+    let { username1, lessions: { title } } = user1
+    console.log(title);
+</script>

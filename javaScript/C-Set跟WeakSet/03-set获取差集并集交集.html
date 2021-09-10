@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>差集、并集、交集</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let a = new Set([1, 23, 43, 64, 4, 6])
+    let b = new Set([23, 43, 123, 1, 325])
+
+    // 并集
+    console.log(new Set([...a, ...b]));
+
+    // 交集
+    let res = [...a].filter(item =>  b.has(item))
+    console.log(res);
+
+    // 获取a差b
+    let res1 = [...a].filter(item => !b.has(item))
+    console.log(res1);
+</script>

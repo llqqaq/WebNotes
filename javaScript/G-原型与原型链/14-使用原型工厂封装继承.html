@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装继承</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function extend(sub, sup) {
+        sub.prototype = Object.create(sup.prototype)
+        Object.defineProperty(sub.prototype, 'constructor', {
+            value: sub,
+            enumerable: false
+        })
+    }
+
+    function Member() {}
+    Member.prototype.show = function () {
+        console.log("show");
+    }
+
+    function User() {}
+    extend(User, Member)
+    let lq = new User()
+    console.log(lq);
+    lq.show()
+</script>

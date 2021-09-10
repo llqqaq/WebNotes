@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两种方式检测属性的差异</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let a = {
+        name: 'lq'
+    }
+    let b = {
+        url: 'shangtou'
+    }
+    Object.setPrototypeOf(a, b)
+    console.log(a.__proto__ === b);
+
+    console.log(a.hasOwnProperty('url')); // 不会在原型链上查找
+    console.log('url' in a); // 会在原型链上查找属性
+
+    for(let k in a) {
+        console.log(k); // 会把b上的url也遍历到
+        if(a.hasOwnProperty(k)) {
+            console.log('添加判断条件', k);
+        }
+    }
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访问器</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let hd = {}
+    hd.__proto__ = {
+        user: {
+            show() {
+                console.log('lq');
+            }
+        }
+    }
+    hd.__proto__ = 'name' // 打印发现这里没生效，原因是在set中进行了判断，不是对象不能修改
+    // 可以这样创建对象，则生效
+    // let hd = Object.create(null)
+    console.log(hd);
+
+
+    /**
+     * 原理
+     * */ 
+    let demo = {
+        action: {},
+        get proto() {
+            return this.action
+        },
+        set proto(obj) {
+            if(obj instanceof Object) {
+                this.action = obj
+            }
+        }
+    }
+    demo.proto = { view() {} }
+    demo.proto = '11' // 设置失败
+    
+    console.log(demo.proto);
+
+
+
+    let lq = {}
+    console.dir(lq); // 原型上有 get set访问器
+</script>

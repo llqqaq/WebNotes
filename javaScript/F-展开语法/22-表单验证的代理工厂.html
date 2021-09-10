@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单验证</title>
+</head>
+<body>
+    <input type="text" validata rule='min: 3, max: 12'>
+    <input type="text" validata rule='max: 3, isNumber'>
+</body>
+</html>
+<script>
+    'use strict'
+    class Validata{
+        max(value, length) {
+            console.log(value.length);
+            return value.length < length
+        }
+        min(value, length) {
+            return value.length > length
+        }
+        isNumber(value) {
+            return /^\d+$/.test(value)
+        }
+    }
+    function ProxyFactority(target) {
+        return new Proxy(target, {
+            set(target, key, el) {           
+                const rule = el.getAttribute('rule').split(',')
+                const validata = new Validata()
+                let state = rule.every(rule => {
+                    const info = rule.split(":")
+                    const key = info[0].trim()
+                    const val = info[1].trim()
+                    return validata[key](el.value, val)
+                })
+                console.log(state);
+                return true
+            },
+            get(target, key) {
+                return target[key]
+            }
+        })
+    }
+    const proxy = ProxyFactority(document.querySelectorAll('[validata]'))
+    proxy.forEach((item, i) => {
+        item.addEventListener('keyup', function() {
+            proxy[i] = this
+        })
+    })
+</script>

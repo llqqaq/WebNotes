@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let [name, age] = ['名字', 18]
+    console.log(name);
+    console.log(age);
+
+
+    let obj = {
+        title: '1',
+        a: 2
+    }
+    let {title, age1} = obj
+    console.log(title);
+    console.log(age1);  // undefined
+
+    const [...arr] = 'abc'
+    console.log(arr); // [a, b, c]
+</script>

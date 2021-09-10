@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>检索字符串</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // indexOf  includes,  可以在后面传一个指定索引，在哪个位置开始查找，默认0  
+    // 数组也适用
+    let str = 'abcdef'
+    console.log(str.indexOf('d'));  // 返回索引 找不到则返回-1 
+    console.log(str.includes('d')); // 返回true false
+
+
+    // startsWith
+    console.log(str.toLowerCase().startsWith('a'));  // 返回true false
+    console.log(str.toUpperCase().endsWith('F'));  // 返回true false
+
+
+    let arr = ['js', 'csss']
+    let string = '这里面含有css'
+    // arr的some方法，只要满足一个true 
+    let status = arr.some(item => {
+        return string.includes(item)
+    })
+    console.log('状态', status);
+</script>

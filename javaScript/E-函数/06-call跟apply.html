@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call跟apply</title>
+</head>
+<body>
+    <button>旧的内容</button>
+    <button>新的内容</button>
+</body>
+</html>
+<script>
+    let username = {
+        name: 'lq'
+    }
+    function Fun(params) {
+        console.log(this.name, params);
+    }
+    Fun() // 直接调为空
+    /**
+     * 改变this的指向
+     *  第一个参数为对象，传递给this,如果不需要改变this则传null
+     *  第二个参数为方法的参数 
+     * 
+     * call跟apply的区别在于传参
+    */
+    Fun.call(username, '参数')
+    Fun.apply(username, ['参数'])
+
+    function show() {
+        alert(this.innerHTML)
+    }
+
+    console.log('-------------');
+    document.querySelectorAll('button').forEach(item => {
+        item.addEventListener('click', () => {
+            // 改变show函数的this指向
+            // show.call(event.target)
+            show.apply(event.target)
+        })
+    })
+</script>

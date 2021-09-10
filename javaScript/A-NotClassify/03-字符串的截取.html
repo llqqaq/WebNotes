@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串的截取</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let str = 'abcdef'
+    // slice substring substr
+    console.log(str.slice(1)); // bcdef
+    console.log(str.substring(1)); // bcdef
+    console.log(str.substr(1)); // bcdef
+
+    console.log(str.slice(1, 2)); // b
+    console.log(str.substring(1, 2)); // b
+    console.log('-----');
+    console.log(str.substr(1, 2)); // bc  从几开始截几位
+
+    console.log(str.slice(-3)); // (倒数第三位) def
+    console.log(str.substring(-3)); // abcdef  没有负数，当成0处理
+    console.log(str.substr(-3)); // def
+
+
+    console.log(str.slice(-3, -1)); // (倒数第三位到第一位) de
+    console.log(str.slice(-3, 0)); // 空
+    console.log(str.substring(-3, -1)); // 空
+    console.log(str.substr(-3, -1)); // 空
+    console.log(str.substr(-3, 2)); // de
+
+    console.log('test', str.substr(str.length-1, 1));
+
+    // 常用来模糊电话 
+    console.log(str.slice(0, -2));   // abcd 截取第一位到倒数第二位   
+</script>

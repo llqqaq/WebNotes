@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更改原型</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let lq = {name: 'lq'}
+    let parent = {
+        name: 'parent',
+        show() {
+            console.log('parent', this.name);
+        }
+    }
+
+    // 设置原型
+    Object.setPrototypeOf(lq, parent)
+    console.dir(lq)
+    // 获取原型
+    console.log(Object.getPrototypeOf(lq));
+
+    lq.show()
+    parent.show()
+</script>

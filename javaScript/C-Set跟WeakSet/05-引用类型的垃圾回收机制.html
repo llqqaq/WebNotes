@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</body>
+</html>
+<script>
+    let a = {demo:1} // 该空间有个引用计数器 现在为  +1
+    let b = a  // +2
+    // a = null  // +1 内存开辟的{demo: 1}空间还未被回收 因为b还在用
+    // b = null  // +0 没有被引用 所以回收
+
+    // WeakSet的弱类型引用
+    let set = new WeakSet()
+    set.add(a) // 弱类型引用，引用计数器并不会++
+    a = null
+    b = null // 清空
+    /**
+     * 此时事实上set是没有值了 因为{demo: 1}被清空了
+     * 但是系统得经过一段时间再检测到 其实已经是没有值了 
+     * 所以为了不发生预发错误，WeakSet类型不存在size values() 或者遍历的方法
+    */
+   setTimeout(() => {
+       console.log(set);  // 此时set内已经没有值了 
+   }, 10000)
+
+
+
+</script>

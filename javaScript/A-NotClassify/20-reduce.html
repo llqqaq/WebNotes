@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reduce</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let arr = [1, 2, 3, 4]
+    console.log(arr.reduce((pre, cur) => {
+        // pre第一次默认为第一个元素1, cur为第二个元素2 
+        // 之后的循环，pre为上一次循环return的值，cur依次3 4, 最后函数返回pre
+        console.log(pre, cur);
+        return '99'
+    }));
+
+
+    console.log('-------------');
+    // 绑定pre的值为1
+    console.log(arr.reduce((pre, cur) => {
+        // 第一次循环pre绑定为1 cur为第一个元素1 
+        // 之后的循环，pre为上一次循环return的值，cur依次2 3 4, 最后函数返回pre
+        console.log(pre, cur);
+        return '99'
+    }, 1));
+
+
+    // 计算和
+    function reduceAdd(arr) {
+        return arr.reduce((count, cur) => {
+            return count += cur
+        }, 0)
+    }
+    console.log('计算和', reduceAdd([1, 2, 3, 4]));
+
+    // 出现的次数
+    function reduceTime(arr, item) {
+        return arr.reduce((count, cur) => {
+            return count += cur === item ? 1 : 0
+        }, 0)
+    }
+    console.log('出现的次数', reduceTime([1, 2, 1, 3, 1], 1));
+
+
+    // 计算最大值
+    function reduceMax(arr) {
+        return arr.reduce((max, cur) => {
+            return max > cur ? max : cur
+        })
+    }
+    console.log('计算最大值', reduceMax([1, 2, 3, 12, 215, 23, 2]));
+    console.log('计算最大值', Math.max(...[1, 2, 3, 12, 215, 23, 2]));
+
+
+
+    // 获取商品价值大于10000元的商品名
+    let goods = [{
+            title: 'iphone12pro',
+            price: 18000
+        },
+        {
+            title: 'iphone12pro',
+            price: 18000
+        },
+        {
+            title: 'iphone7',
+            price: 1800
+        },
+        {
+            title: 'iphone6',
+            price: 180
+        },
+        {
+            title: 'ipad',
+            price: 23004
+        },
+        {
+            title: 'ipad',
+            price: 23004
+        },
+    ]
+
+    function getGoods(arr) {
+        return arr.reduce((pre, cur) => {
+            if (cur.price > 10000) pre.push(cur)
+            return pre
+        }, []).map(item => item.title)
+    }
+
+    function getGoods1(arr) {
+        let res = []
+        arr.forEach(item => {
+            if (item.price > 10000) res.push(item.title)
+        })
+        return res
+    }
+    console.log("超过10000", getGoods(goods));
+    console.log("超过10000", getGoods1(goods));
+
+    function filterGoods(arr) {
+        return arr.reduce((pre, cur) => {
+            let res = pre.find(item => item.title === cur.title)
+            if (!res) pre.push(cur)
+            return pre
+        }, [])
+    }
+    console.log('去除重复的商品', filterGoods(goods));
+
+    let repeat = [1, 2, 1, 3, 1, 4, 1]
+    console.log('数组去重', repeat.reduce((pre, cur) => {
+        if(!pre.includes(cur)) pre.push(cur)
+        return pre
+    }, []));
+</script>

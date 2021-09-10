@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /**
+     * User.__proto__   指向 构造函数的prototype，
+     * User.constructor 指向构造函数本身
+     * 构造函数的prototype.__proto__ 指向他的上一级原型链的prototype
+     * 如果没有就指向Object.prototype，Object.prototype.__proto__指向null
+     * 只有构造函数才有prototype
+    */
+    let User = function(name) {
+        this.name = name
+    }
+    let hd = new User('lq')
+    console.log(hd);
+    console.dir(User.__proto__ ===  Function.prototype);
+    console.log(User.constructor === Function);
+    console.log(hd.__proto__ === User.prototype); // 实例的__proto__指向构造函数的prototype
+    console.log(hd.constructor === User);   // 实例的constructor指向构造函数本生
+    console.dir(User.prototype.__proto__ === Object.prototype);
+    console.log(Object.prototype.__proto__);
+
+
+    console.log(hd.__proto__ === User.prototype); // 实例的__proto__指向构造函数的prototype
+    console.log(Object.getPrototypeOf(hd) === User.prototype); // true
+    console.log(Object.getPrototypeOf(hd).constructor === User); // true
+
+
+
+    Object.prototype.testShow = function() {
+        console.log('api in Object.prototype');
+    }
+    let Demo = function() {
+        // this.testShow = function() {
+        //     console.log('api in Demo');
+        // }
+    }
+    let lq = new Demo()
+    lq.testShow() 
+    console.log(lq); // 首先在lq对象自己查找api
+                     // 到原型上找lq.__proto__(Demo)查找 未果
+                     // 再到lq.__proto__.__proto__（Object）找到该方法
+
+</script>

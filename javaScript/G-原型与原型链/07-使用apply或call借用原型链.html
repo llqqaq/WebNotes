@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let lq = {
+        data: [10, 23,1, 22, 115]
+    }
+    Object.setPrototypeOf(lq, {
+        max() {
+            console.log('max的this', this);
+            return this.data.sort((a, b) => a-b)
+        }
+    })
+    let b = {
+        lessions: {js: 80, css:20, ja:21, php: 2},
+        get data() {
+            console.log('b的this', this);
+            return Object.values(this.lessions)
+        }
+    }
+    console.log(lq.max.call(b));
+    console.log(Math.max(...lq.data));
+    console.log(Math.max.call(null, ...lq.data));
+    console.log(Math.max.apply(null, lq.data));
+    console.log(Math.max.apply(null,  Object.values(b.lessions)));
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 这里属性是对象
+    // let lq = {
+    //     username: 'lq',
+    //     lessions: {
+    //         title: 'css'
+    //     }
+    // }
+    // function copyDeep(object) {
+    //     let res = {}
+    //     for(const key in object) {
+    //         res[key] = 
+    //             typeof object[key] === 'object'? copyDeep(object[key]) : object[key]
+    //     } 
+    //     return res
+    // }
+    // let hd = copyDeep(lq)
+    // lq.lessions.title = 'javascript'  // 并不会引起hd的改变
+    // console.log(JSON.stringify(lq, null, 2));
+    // console.log(JSON.stringify(hd, null, 2));
+
+
+    // 属性是对象/数组
+    let lq = {
+        username: 'lq',
+        lessions: {
+            title: 'css'
+        },
+        arr: [1, 2, 3]
+    }
+    function copyDeep(params) {
+        let res = params instanceof Array ? [] : {}
+        for(let [k, v] of Object.entries(params)) {
+            res[k] = typeof v === 'object'? copyDeep(v) : v
+        }
+        return res
+    }
+    let hd = copyDeep(lq)
+    lq.arr[1] = 10  // 并不会引起hd的改变
+    console.log(JSON.stringify(lq, null, 2));
+    console.log(JSON.stringify(hd, null, 2));
+</script>

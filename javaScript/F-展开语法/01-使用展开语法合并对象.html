@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展开语法合并对象</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let config = { title: '标题' }
+    let obj1 = {...config, demo: '2'}
+    console.log(obj1);
+
+    function user(params) {
+        let config = {
+            username: 'lq',
+            age: 18
+        }
+        params = {...config, ...params} // 后面传递的age会覆盖前面的
+        console.log(params); 
+    }
+    user({age: 25})
+</script>

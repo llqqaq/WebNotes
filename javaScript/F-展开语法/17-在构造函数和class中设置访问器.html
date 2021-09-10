@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数跟class中使用访问器</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 构造函数中使用访问器
+    function User() {
+        let data = {
+            name: '',
+            age: 0
+        }
+        Object.defineProperties(this, {
+            name: {
+                set(value) {
+                    data.name = value
+                },
+                get() {
+                    return data.name
+                }
+            },
+            age: {
+                set(value) {
+                    data.age = value
+                },
+                get() {
+                    return data.age
+                }
+            }
+        })
+    }
+    let a = new User()
+    a.name = 'lq'
+    console.log(a.name);
+    console.log(a);
+
+    // 类中使用构造器
+    class User1 {
+        constructor(name, age) {
+            this.data = {
+                name,
+                age
+            }
+        }
+        set name(value) {
+            this.data.name = value
+        }
+        get name() {
+            return this.data.name
+        }
+    }
+    let b = new User1()
+    b.name = 'demo'
+    console.log(b.name);
+</script>

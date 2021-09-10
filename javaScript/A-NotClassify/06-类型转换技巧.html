@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类型转换技巧</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let number = 1
+    number = number + ''  //number to string
+    number = String(number)
+    number = toString(number)
+
+
+    let str = '1'
+    str = str*1  // string to number
+    str = parseInt(str)  
+    str = Number(str)
+
+    let str1 = '11sdasdad'
+    str1 = parseInt(str1) // string to number  11,自动忽略后面字符,要以数字开头才满足
+    str = Number.parseInt(str1)  // NAN
+
+</script>

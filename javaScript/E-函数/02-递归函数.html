@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 获取5的阶乘
+    function getFactorial(num) {
+       return  num === 1? 1 : num * getFactorial(--num)
+    }
+    console.log(getFactorial(9));
+
+
+
+
+    // 求和
+    function add(...arg) {
+        return arg.length === 0 ? 0 : arg.pop() + add(...arg)
+    }   
+    console.log(add(1, 2, 3));
+
+
+
+    // 递归加值
+    function change(lessions, num = 100, i = 0) {
+        if(lessions.length === i) {
+            return lessions
+        }
+        lessions[i].num += num
+        return change(lessions, num = 100, ++i) 
+    }
+    let lessions = [
+        {
+            num: 10
+        },
+        {
+            num: 30
+        },
+        {
+            num: 20
+        }
+    ]
+    console.log(change(lessions));
+</script>

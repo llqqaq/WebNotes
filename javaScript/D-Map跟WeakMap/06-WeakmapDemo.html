@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>例子</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .left_box,
+        .right_box {
+            margin-top: 100px;
+            display: inline-block;
+            vertical-align: top;
+            border: 1px solid #222;
+            width: 200px;
+            height: 144px;
+        }
+
+        ul {
+            width: 100%;
+            list-style: none;
+        }
+
+        li {
+            width: 80%;
+            margin: 10px auto;
+            border: 2px solid red;
+            padding-left: 10px;
+            line-height: 30px;
+            font-size: 13px;
+        }
+
+        li span {
+            float: right;
+            font-size: 20px;
+            margin-right: 10px;
+            background: skyblue;
+            cursor: pointer;
+        }
+        .chosen_box span{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left_box">
+        <ul>
+            <li><i>php</i> <span>+</span></li>
+            <li><i>js</i> <span>+</span></li>
+            <li><i>css</i> <span>+</span></li>
+        </ul>
+    </div>
+    <div class="right_box">
+        <p>一共选择了<span>0</span>种课程</p>
+        <div class="chosen_box">
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    class Lession {
+        constructor() {
+            this.liList = document.querySelectorAll('ul>li')
+            this.num = document.querySelector('.right_box p span')
+            this.choose = document.querySelector('.right_box .chosen_box')
+            this.map = new WeakMap()
+            this.init()
+        }
+        init() {
+            this.liList.forEach(li => {
+                li.querySelector('span').addEventListener('click', () => {
+                    // console.log(event.target.parentElement);
+                    let status = li.getAttribute('select')
+                    let span = event.target
+                    if(status) {
+                        span.innerHTML = '+'
+                        this.map.delete(li)
+                        li.removeAttribute('select')
+                    } else {
+                      span.innerHTML = '-'
+                      this.map.set(li)
+                      li.setAttribute('select', true)
+                    }
+                    this.setNum()
+                    this.setChosen()
+                })
+            })
+        }
+        setNum() {
+            let num = [...this.liList].reduce((count, cur) =>{
+                return count += this.map.has(cur)? 1 : 0
+            }, 0)
+            this.num.innerHTML = num
+        }
+        setChosen() {
+            let dom = [...this.liList].filter(item => {
+                return this.map.has(item)
+            }).map(span => {
+                return `<span>${span.querySelector('i').innerText}</span>`
+            }).join('')
+            console.log(dom);
+            this.choose.innerHTML = dom
+        //     let dom = ''
+        //     this.liList.forEach(item => {
+        //         if(this.map.has(item)) {
+        //             dom += `<span>${item.querySelector('i').innerText}</span>`
+        //         }
+        //     })
+        //    
+        }
+    }
+    new Lession()
+</script>

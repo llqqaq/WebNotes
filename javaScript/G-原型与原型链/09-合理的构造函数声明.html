@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数声明</title>
+</head>
+<body>
+    <button onclick="show(this)"></button>
+</body>
+</html>
+<script>
+    function User(name) {
+        this.name = name
+    }
+    User.prototype.show = function() {
+        console.log('将函数定义在原型上，实例就可以通过原型链找到这个函数，不用每个都开辟地址', this);
+    }
+    let a = new User('张三')
+    let b = new User('李四')
+    a.show()
+    b.show()
+
+    function show(e) {
+      console.log(event.target);
+    }
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind</title>
+</head>
+
+<body>
+    <button>按钮</button>
+</body>
+
+</html>
+<script>
+    function show() {
+        console.log(this.name);
+    }
+    show.call({
+        name: 'lq'
+    }) // 立刻执行
+    let bindFun = show.bind({
+        name: 'lq'
+    })
+    console.log(bindFun); // 返回一个函数，相当于复制一个函数
+    bindFun()
+
+
+    // 这里证明bind之后是新的函数    
+    function a() {}
+    b = a
+    console.log(b === a); //true
+    b = a.bind()
+    console.log(b === a); // false
+
+
+    // bind的传参
+    console.log('传参');
+    function demo(a, b) {
+        console.log(this.f, a, b);
+    }
+    demo.call({ f: 1 }, 1, 2)
+    let bindDemo = demo.bind({ f: 1 }, 1, 2)
+    bindDemo() // 1 1 2
+    bindDemo(2, 3) // 上面bind的时候已经传参 所以这里再传就不生效,除非上面没传，这里就可以生效
+
+
+    document.querySelector('button')
+        .addEventListener('click', function() {
+            console.log(this.url, event.target)
+        }.bind({url: 'wwww'}))
+</script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let obj = {
+        name: 'lq'
+    }
+    let obj1 = {
+        [obj]: 'llq'
+    }
+    console.log(obj1) // 对象中的key只能是字符串，所以上面的[obj]会被转换成[object Object]
+    console.log(obj1['[object Object]']); // llq
+    console.log(obj1[obj.toString()]); // llq
+
+
+    // 使用map创建的 所有类型都可以作为key
+    let map = new Map()
+    map.set({}, 'Obj')
+    map.set(function () {}, 'Fun')
+    map.set('name', 'String')
+    map.set(1, 'Number')
+    console.log(map);
+
+    // 也可以通过构造函数创建
+    console.log(new Map([
+        ['name', 'String'],
+        [1, 'Number']
+    ]));
+
+
+    // 遍历
+    console.log('---------遍历-----------');
+    console.log(map.keys());  //  获取所有的key
+    console.log(map.values());  //  获取所有的value
+    console.log(map.entries());  //  获取所有的键值对
+    for(let [key, value] of map.entries()) {
+        console.log(key, value);
+    }
+    console.log('---');
+    map.forEach((value, key) => {
+        console.log(value, key);
+    })
+
+
+    // 增删查改
+    console.log('---------增删查改-----------');
+    // console.log(map.get('name'));
+    // console.log(map.delete('name'));
+    // console.log(map.has('name'));
+    // map.clear()
+</script>

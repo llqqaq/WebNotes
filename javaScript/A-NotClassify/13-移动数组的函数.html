@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动数组</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 移动数组元素位置
+    function moveArray(arr, from, to) {
+        if(from < 0 || to >= arr.length) {
+            console.error('出错')
+            return
+        }
+        let newArray = [...arr]
+        let item = newArray.splice(from, 1)
+        console.log(item);
+        newArray.splice(to, 0, ...item)
+        console.log(newArray);
+    }
+    let arr = [1, 2, 3, 4, 5]
+    moveArray(arr, 3, 4)
+
+    
+</script>
