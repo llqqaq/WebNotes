@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态属性的使用</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function User(url) {
+        this.url = url,
+        this.show = function() {
+            return url
+        }
+    }
+    User.url = '111' // 构造函数的静态属性
+    let lq = new User('lq')
+    console.log(lq.url); // lq
+    console.log(User.url); // 111
+    console.log(lq.show()); // lq
+
+    class Hd {
+        // 静态属性，用于所有实例都共有
+        static host = 'www'
+        getHost() {
+            return `地址是${Hd.host}`
+        }
+    }
+    console.log(new Hd().getHost());
+    let hd = new Hd()
+    console.log(hd.host); // undefined
+    console.log(Hd.host); // www
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态属性</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let data = [
+        {title: 'js', price: 2000},
+        {title: 'php', price: 1000},
+        {title: 'css', price: 3000}
+    ]
+    class Lession {
+        constructor(data) {
+            this.model = data
+        }
+        get price() {
+            return this.model.price
+        }
+        static createObj(data) {
+            return data.map(item => new this(item))
+        }
+        static maxPrice(lessions) {
+            return lessions.sort((a, b) => b.price - a.price)[0]
+        }
+        static totalPrice(lessions) {
+            return lessions.reduce((t, c) => t + c.price, 0)
+        }
+    }
+    let lessions = Lession.createObj(data)
+    console.log(Lession.maxPrice(lessions).model.price);
+    console.log(Lession.totalPrice(lessions));
+</script>

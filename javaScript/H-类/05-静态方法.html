@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态方法</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function User() {}
+    // 普通方法
+    User.prototype.show = function() {
+        console.log(this);
+    }
+    let hd = new User()
+    hd.show() // 输出hd实例
+    // 静态方法，只属于构造函数自己的方法,实例不拥有
+    User.__proto__.show = function() {
+        console.log(this);
+    }
+    User.show() // 输出User
+
+
+
+    console.log('------------------');
+    class Hd {
+        show() {
+            console.log('prototype show');
+        }
+        static show() {
+            console.log('static show');
+        }
+    }
+    let lq = new Hd()
+    lq.show()
+    Hd.show()
+    console.dir(Hd);
+
+
+    console.log('-----------demo--------------');
+    class Demo {
+        constructor(name, age) {
+            this.name = name
+            this.age = age
+        }
+        static create(...arg) {
+            return new this(...arg) 
+        }
+    }
+    // 自定义实例对象
+    let demo = Demo.create('lq', 18)
+    console.log(demo);
+</script>

@@ -35,7 +35,7 @@
     console.log(Object.getPrototypeOf(hd) === User.prototype); // true
     console.log(Object.getPrototypeOf(hd).constructor === User); // true
 
-
+    alert(User.prototype.constructor === User)  // 指向自己
 
     Object.prototype.testShow = function() {
         console.log('api in Object.prototype');

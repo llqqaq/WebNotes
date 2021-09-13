@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用weakMap保护属性</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const host = new WeakMap()
+    class User{
+        constructor() {
+            host.set(this, 'www')
+        }
+        set url(url) {
+            if (!/^https?:\/\//i.test(url)) {
+                throw new Error('地址错误')
+            }
+            host.set(this, url)
+        }
+        get url() {
+            return host.get(this)
+        }
+    }
+    let hd = new User()
+    hd.url = 'http://'
+    console.log(hd.url);
+</script>

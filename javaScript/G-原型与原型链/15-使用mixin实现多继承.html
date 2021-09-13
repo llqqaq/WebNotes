@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mixin多继承</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    const Par = {
+        test() {
+            console.log('test');
+        }
+    }
+    const Creadit = {
+        __proto__: Par,
+        buy() {
+            console.log('buy');
+            // super: == 指向当前对象的原型，Creadit,不受外部调用影响
+            super.test()
+        }
+    }
+    
+    function extend(sub, sup) {
+        sub.prototype = Object.create(sup.prototype)
+        Object.defineProperty(sub.prototype, 'constructor', {
+            value: sub,
+            enumerable: false
+        })
+    }
+
+    function User() {}
+    User.prototype.show = function () {
+        console.log('show');
+    }
+
+    function Member() {}
+    extend(Member, User)
+    // 使用mixin混合
+    Member.prototype = Object.assign(Member.prototype, Creadit)
+    let member = new Member()
+    member.buy()
+</script>

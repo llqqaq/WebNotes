@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 构造函数的继承
+    function User(name) {
+        this.name = name
+    }
+    function Admin(name) {
+        // 属性继承
+        User.call(this, name)
+    }
+    // 方法继承
+    Admin.prototype = Object.create(User.prototype)
+    Admin.prototype.show = function() {}
+    let hd = new Admin('lq')
+    console.dir(hd);
+    console.log(Admin.prototype.__proto__ === User.prototype);
+
+
+    // 类的属性继承
+    class User1 {
+        demo = 'test'
+        constructor(name) {
+            this.name = name
+        }
+        show() {
+            console.log(this.name);
+        }
+    }
+    // Admin1.prototype.__proto__ === User1.prototype
+    class Admin1 extends User1 {
+        constructor(name) {
+            super(name)
+        }   
+    }
+    let hd1 = new Admin1('lq')
+    console.log(hd1);
+    hd1.show()
+    console.log(Admin1.prototype.__proto__ === User1.prototype);
+ </script>

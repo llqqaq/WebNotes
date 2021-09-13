@@ -28,8 +28,17 @@
     }
 
     function User() {}
+    
     extend(User, Member)
+    User.prototype.selfFun = function() {
+        console.log('selfFun');
+    }
     let lq = new User()
+    let hd = new Member()
+    // hd.selfFun()
+    console.log(hd);
+    console.log('User.prototype', User.prototype);
     console.log(lq);
     lq.show()
+    lq.selfFun()
 </script>

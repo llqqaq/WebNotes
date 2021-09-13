@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保护属性</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+     class User {
+         // 使用下划线让开发者知道这是保护属性，不应该直接修改
+         _url = 'https://www'
+        constructor(name) {
+            this.name = name
+        }
+        set url(url) {
+            if(!/^https?:\/\//i.test(url)) {
+                throw new Error('地址错误')
+            }
+            this._url = url
+        }
+        get url() {
+            return this._url
+        }
+    }
+    let hd = new User('https://www')
+    // hd._url = 'http://www' // 可以直接修改，但是有了下划线，开发者人为控制，知道不能修改
+    hd.url = 'http://www'
+    console.log(hd.url);
+</script>

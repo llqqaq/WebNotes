@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 使用类不使用构造函数： 好看 清晰
+    class User {
+        constructor(name) {
+            this.name = name
+        }
+        // 这里的这些方法会自动放在User.prototype
+        show() {
+            console.log(1);
+        }
+        getName() {
+            return this.name
+        }
+    }
+    let lq = new User('lq')
+    console.dir(User);
+    console.log(lq.name);
+    console.log(lq.getName());
+    lq.show()
+</script>

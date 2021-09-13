@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>严格模式下运行</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 'use strict'
+    function User() {}
+    User.prototype.show = function() {
+        function test() {
+            // 在严格模式下会输出undefined，普通模式输出window
+            console.log(this);
+        }
+        test()
+    }
+    new User().show()
+
+    class User1 {
+        constructor(name) {
+            this.name = name 
+        }
+        show() {
+            function test() { 
+                // 非严格模式下也输出undefined，所以推荐用类实例对象
+                console.log(this);
+            }
+            test() 
+        }
+        show1 = () => {
+            return this.name
+        }
+    }
+    new User1().show()
+    console.log(new User1().show1()); // undefined
+</script>

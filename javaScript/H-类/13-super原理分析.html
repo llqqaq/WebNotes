@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>super原理分析</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    class User {
+        show() {
+            console.log('User', this);
+        }
+    }
+    class Admin extends User {
+        show() {
+            console.log('Admin', this);
+            super.show()
+        }
+    }
+    new Admin().show()
+
+    // 推原理
+    // let hd = {
+    //     name: 'hd.name',
+    //     show() {
+    //         // 首先在自身属性上查找name
+    //         // 其次通过原型链往上查找
+    //         console.log(this.name);
+    //     }
+    // }
+    // let lq = {
+    //     name: 'lq.name',
+    //     __proto__: hd,
+    //     show() {
+    //         this.__proto__.show.call(this)
+    //     }
+    // }
+    // lq.show()
+    // console.log(lq);
+
+    // 两重继承
+    let common = {
+        show() {
+            console.log('comon', this);
+        }
+    }
+    let hd = {
+        name: 'hd.name',
+        __proto__: common,
+        show() {
+            super.show()
+        }
+    }
+    let lq = {
+        name: 'lq.name',
+        __proto__: hd,
+        show() {
+            super.show()
+        }
+    }
+    lq.show()
+    console.log(lq);
+</script>

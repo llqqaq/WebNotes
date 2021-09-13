@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用Symbol属性定义protected属性</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    const protecteds = Symbol()
+    class Common {
+        constructor() {
+            this[protecteds] = {}
+            this[protecteds].url = 'https://'
+        }
+        set url(url) {
+            if (!/^https?:\/\//i.test(url)) {
+                throw new Error('地址错误')
+            }
+            this[protecteds].url = url
+        }
+        get url() {
+            return this[protecteds].url
+        }
+    }
+    class User extends Common {
+        constructor() {
+            super()
+        }
+    }
+    let hd = new User()
+    console.log(hd[Symbol()]);// undefined
+    hd.url = 'http://'
+    console.log(hd.url);
+</script>

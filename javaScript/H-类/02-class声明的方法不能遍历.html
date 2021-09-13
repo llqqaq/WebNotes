@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无法遍历</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function User() {
+        this.name = 1
+    }
+    User.prototype.show = function () {}
+    let hd = new User()
+    console.dir(hd.__proto__);
+    for (let k in hd) {
+        console.log(k); // 这里会遍历出prototype的key
+        // 判断当前k是否在自身对象中
+        if (hd.hasOwnProperty(k)) {
+            console.log('筛选', k);
+        }
+    }
+    // 原因, enumerable为true
+    console.log(JSON.stringify(Object.getOwnPropertyDescriptor(User.prototype, 'show'),
+        null, 2));
+
+
+    class User1{
+        constructor(name) {
+            this.name = name
+        }
+        show() {}
+    }
+    let lq = new User1('lq')
+    for(let k in lq) {
+        /**
+         * 这里只会遍历出name，
+         * Object.getOwnPropertyDescriptor(User1.prototype, 'show')的enumerable为false
+        */
+        console.log(k);
+    }
+</script>

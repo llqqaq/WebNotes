@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私有属性</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    class User {
+        // 前面加上#变为私有属性 外部不能访问 不能被继承
+        #host= 'www'
+        name = 'lq'
+        constructor() {
+            console.log(this.name);
+            console.log(this.#host);
+            this.#show()
+        }
+        #show() {
+            console.log(this);
+        }
+    }
+    let hd = new User()
+    console.log(hd.name);
+    // hd.#show() // 报错
+    // console.log(hd.#host); // 报错
+</script>
