@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.allSettled</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // Promise.allSettled 不管状态，都能接收
+    let hd = new Promise((resolve, reject) => {
+        reject('第一个异步')
+    })
+    let lq = new Promise((resolve, reject) => {
+        resolve('第二个异步')
+    })
+    Promise.allSettled([hd, lq])
+        .then(result => {
+            console.dir(result);
+            let filter = result.filter(item => {
+                if(item.status === "fulfilled") {
+                    return item
+                }
+            })
+            console.log(filter);
+        })
+</script>

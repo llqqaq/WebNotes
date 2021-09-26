@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mixin混合模式</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let Tool = {
+        max(key) {
+            return this.data.sort((a, b) => b[key] - a[key])[0]
+        }
+    }
+    class Lession {
+        constructor(lession) {
+            this.lessions = lession
+        }
+        get data() {
+            return this.lessions
+        }
+    }
+    const data = [
+        { name: 'js', price: 100, click: 188 },
+        { name: 'mysql', price: 212, click: 34 },
+        { name: 'vue.js', price: 300, click: 88 },
+    ]
+    Object.assign(Lession.prototype, Tool)
+    let hd = new Lession(data)
+    console.log(Lession);
+    console.log(hd.max('price'));
+</script>

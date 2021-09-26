@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.all</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // Primise.all的then接收的必须是<fulfilled>已解决状态
+
+
+    // let hd = new Promise((resolve, reject) => {
+    //     setTimeout(() => {reject('第一个异步')}, 1000)
+    // })
+    // let lq = new Promise((resolve, reject) => {
+    //     setTimeout(() => {resolve('第二个异步')}, 3000)
+    // })
+    // Promise.all([hd, lq])
+    //     .then(result => {
+               // [ "第一个异步", "第二个异步"]
+    //         console.log('异步执行完才会触发', result);
+    //     })
+    //     // 如果上面reject，则直接走这一步
+    //     .catch(error => {
+    //         console.log('捕获', error);
+    //     })
+
+
+
+
+    // let hd = new Promise((resolve, reject) => {
+    //     setTimeout(() => {reject('第一个异步')}, 1000)
+    // }).catch(error => {
+    //     console.log(error);
+    // })
+    // setTimeout(() => { console.log(hd);}, 1000) // Promise {<fulfilled>: undefined}
+    // let lq = new Promise((resolve, reject) => {
+    //     setTimeout(() => {resolve('第二个异步')}, 3000)
+    // })
+    // Promise.all([hd, lq])
+    //     .then(result => {
+    //         // [undefined, "第二个异步"]
+    //         console.log('上面的额catch也是返回一个执行成功状态的promise', result); 
+    //     })
+
+    //批量获取数据demo
+    function ajax(name) {
+        return new Promise(res => {
+            setTimeout(() => {
+                res(name)
+            }, 3000)
+        })
+    }
+    function getUser(name) {
+        let promise = name.map(name => {
+            return ajax(name)
+        })
+        console.log(promise);
+        return Promise.all(promise)
+    }
+    getUser(['lq', 'hd']).then(res => {
+        // ["lq", "hd"]
+        console.log(res);
+    })
+</script>

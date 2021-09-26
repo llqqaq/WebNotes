@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>await错误处理</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    async function errorHandle() {
+        try {
+            let user = await new Promise((resolve, reject) => {
+                resolve('result')
+            })
+            console.log('上面抛错这里不执行');
+            return user
+        } catch (error) {
+            console.log('处理错误', error);
+        }
+        console.log('错误处理后就执行了');
+    }
+    errorHandle().then(res => {
+        console.log(res);
+    })
+</script>

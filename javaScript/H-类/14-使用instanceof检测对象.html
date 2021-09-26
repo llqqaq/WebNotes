@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instanceof检测对象</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function User() {}
+    function Admin() {}
+    Admin.prototype = Object.create(User.prototype)
+    let hd = new Admin()
+    // 判断Admin.prototype是否在hd的原型链上
+    console.log(hd instanceof Admin);
+    console.log(hd.__proto__ === Admin.prototype);
+    // 判断User.prototype是否在hd的原型链上
+    console.log(hd instanceof User);
+    console.log(hd.__proto__.__proto__ === Admin.prototype.__proto__);
+    console.log(hd.__proto__.__proto__ === User.prototype);
+
+    console.log('-------使用递归----------');
+    // 使用递归一层一层往上找
+    function checkPrototype(obj, constructor) {
+        if(!obj.__proto__) return false
+        if(obj.__proto__ === constructor.prototype) return true
+        return checkPrototype(obj.__proto__, constructor)
+    }
+    console.log(checkPrototype(hd, User));
+    console.log(checkPrototype(hd, Admin));
+    console.log(checkPrototype(hd, Array)); // false
+
+
+    // 同理
+    // class User {}
+    // class Admin extends User {}
+    // let hd = new Admin()
+    // console.log(hd instanceof User);
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载script</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function loadScript(src) {
+        return new Promise((resolve, reject) => {
+            let script = document.createElement('script')
+            script.src = src
+            script.onload = () => resolve(script)
+            script.onerror = reject
+            document.body.appendChild(script)
+        })
+    }
+    // 嵌套 不用
+    // loadScript('0301-js.js').then(script => {
+    //     loadScript('0302-js.js').then(script => {
+    //         callBack()
+    //     })
+    // })
+    
+    // 推荐下面这种写法
+    loadScript('0301-js.js')
+        .then(script => {
+            return loadScript('0302-js.js')
+        })
+        .then(script => {
+            callBack()
+        })
+</script>

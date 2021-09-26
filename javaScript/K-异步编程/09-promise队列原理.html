@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise队列原理</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // let promise = Promise.resolve()
+    // promise
+    //     .then(resolve => {
+    //         return new Promise(resolve => {
+    //             setTimeout(() => {
+    //                 console.log(1);
+    //                 // 只有resolve，then才会继续执行
+    //                 resolve()
+    //             }, 1000)
+    //         })
+    //     })
+    //     .then(resolve => {
+    //         return new Promise(resolve => {
+    //             setTimeout(() => {
+    //                 console.log(2);
+    //                 resolve()
+    //             }, 1000)
+    //         })
+    //     })
+    //     .then(res => {
+    //         setTimeout(() => {
+    //             console.log(3);
+    //         }, 1000)
+    //     })
+
+
+    let promise = Promise.resolve()
+    promise = promise
+        .then(resolve => {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    console.log(1);
+                    // 只有resolve，then才会继续执行
+                    resolve()
+                }, 1000)
+            })
+        })
+    promise.then(resolve => {
+        setTimeout(() => {
+            console.log(2);
+        }, 1000)
+    })
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宏任务提升的误解</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            /**
+             * 执行到这里，才会把then的任务放入微任务队列
+             * 等这个宏任务执行完，才会去执行微任务
+            */
+            resolve() // resolve之后才会把then里面的任务放进微任务队列
+            setTimeout(() => {
+                console.log('宏任务里面套宏任务'); //4
+            }, 0)
+            console.log('宏任务队列'); // 2
+        }, 100)
+        console.log('主线程'); // 1
+    }).then(res => {
+        console.log('微任务队列'); // 3,执行完又回到宏任务列表
+    })
+    /**
+     * 主线程
+     * 宏任务队列
+     * 微任务队列
+     * 宏任务里面套宏任务
+    */
+</script>

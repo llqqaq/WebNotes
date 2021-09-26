@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块的基本使用</title>
+</head>
+<!-- 模块延时解析 -->
+<script type="module">
+    let test = 'test'
+    import { 
+            title as otherName, // 设置别名，后面的程序只能使用别名 
+            show
+            } from './02.js'
+    console.log('title', otherName);
+    // 这里调用没报错，因为模块先引入，等到页面资源加载才会解析
+    show()
+</script>
+<body>
+    <button></button>
+</body>
+</html>
+<script>
+    // 这里不能使用 因为上面module属于一个模块，有自己的作用域
+    setTimeout(() => {console.log(test);}, 2000)
+</script>

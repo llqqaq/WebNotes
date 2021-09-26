@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>声明promise类以及绑定this</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./01.js"></script>
+<script>
+    let lq = new Newpromise((resolve, reject) => {
+        reject('拒绝')
+    })
+        .then(
+            value => {
+                return new Newpromise((resolve, reject) => {
+                    resolve('新的resolve')
+                })
+            },
+            reason => {
+                return new Newpromise((resolve, reject) => {
+                    reject('新的reject')
+                })
+            }
+        )
+        .then(
+            value => {
+                console.log('value', value);
+            },
+            reason => {
+                console.log('Error', reason);
+            })
+
+</script>

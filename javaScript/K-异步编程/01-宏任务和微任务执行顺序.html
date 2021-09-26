@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顺序</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    setTimeout(() => {
+        console.log('宏任务setTimeout');
+    }, 0)
+    new Promise((resolve, reject) => {
+        console.log('同步');
+        resolve()
+    }).then(res => {
+        console.log('微任务');
+    })
+    console.log("主线程");
+
+    /**
+        同步
+        主线程
+        微任务
+        宏任务setTimeout
+    */
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resolve的简写</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    Promise.resolve('简写').then(res => console.log(res))
+    // ===
+    new Promise(resolve => resolve('简写')).then(res => console.log(res))
+
+
+    function test() {
+        return Promise.resolve('测试')
+    }
+    test().then(res => console.log(res))
+
+    // 原理
+    Promise.lq = function(value) {
+        return new Promise(resolve =>  resolve(value))
+    }
+    Promise.lq('重写').then(res => console.log(res))
+
+    // 其他用法，如果一个类中包含then方法，那么会被当成promise
+    let hd = {
+        then(resolve, reject) {
+            resolve('lin')
+        }
+    }
+    Promise.resolve(hd).then(value => console.log(value))
+</script>

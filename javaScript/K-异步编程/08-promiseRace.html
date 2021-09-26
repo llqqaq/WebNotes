@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.race</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let hd = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('第一个异步')
+        }, 1000)
+    })
+    let lq = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('第二个异步')
+        }, 3000)
+    })
+    Promise.race([hd, lq])
+        .then(result => {
+            // 第一个异步
+            console.log('谁先执行完毕就获取', result);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+</script>
