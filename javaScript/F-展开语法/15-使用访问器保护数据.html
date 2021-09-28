@@ -19,7 +19,7 @@
             name: 'lq',
             age: 18
         },
-        age: 12,
+        age: 12, // 会被覆盖
         set age(value) {
             if (typeof value !== "number" || value < 10 || value > 100) {
                 throw new Error('年龄要求不对')
@@ -27,6 +27,7 @@
             this.data.age = value
         },
         get age() {
+            // console.log(this.age); // 无限调用age(), 因为上面的age：12会被覆盖
             return this.data.age + '岁'
         }
     }

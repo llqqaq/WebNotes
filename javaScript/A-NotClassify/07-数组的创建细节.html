@@ -11,7 +11,7 @@
 </body>
 </html>
 <script>
-    let arr1 = [1]
+    let arr1 = []
     arr1[4] = 3   // 索引为 1 2 3 的为空
     console.log(arr1);
 
@@ -38,7 +38,7 @@
     let obj1 =  {
         demo: '1'
     }
-    console.log(str.split(''));
+    console.log(str.split('')); 
     console.log(Array.from(str)); // the same 
     console.log(Array.from(obj1));  // 输出[],因为对象跟字符串得有length属性才能转
     let obj2 = {

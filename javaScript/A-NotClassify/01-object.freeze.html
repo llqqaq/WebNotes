@@ -15,12 +15,17 @@
     // 'use strict'
     const Host = {
         url: '...',
-        port: 110
+        port: 110,
+        demo: {
+            test:1
+        }
     }
 
-    Object.freeze(Host)
+    Object.freeze(Host) // 浅冻结变量
+    Host.test111 = 'test'  // 添加属性也没有用
     Host.port = 80  // 冻结变量 这里无效，在严格模式下回报错
-    console.log(Host);
+    Host.demo.test = 2 // 这里生效
+    console.dir(Host);
 
 
 </script>

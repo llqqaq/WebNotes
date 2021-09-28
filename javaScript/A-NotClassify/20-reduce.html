@@ -44,7 +44,7 @@
     // 出现的次数
     function reduceTime(arr, item) {
         return arr.reduce((count, cur) => {
-            return count += cur === item ? 1 : 0
+            return count += (cur === item) ? 1 : 0
         }, 0)
     }
     console.log('出现的次数', reduceTime([1, 2, 1, 3, 1], 1));

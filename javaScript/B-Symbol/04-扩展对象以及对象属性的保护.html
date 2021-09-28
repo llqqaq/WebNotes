@@ -25,18 +25,20 @@
         // [user]是一个symbol类型，可以理解为私有属性，外部获取不到
     }
     // Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组,数组中属性名的排列顺序和使用 for...in 循环遍历该对象时返回的顺序一致 。
+    console.log(Object.keys(obj));
     for (let key of Object.keys(obj)) {
         console.log(key); // 也只能输出title
     }
-
+    console.log(Object.getOwnPropertySymbols(obj));
     for (let key of Object.getOwnPropertySymbols(obj)) {
         console.log(key); // 只能输入symbol属性，   Symbol('这是一个symbol')
     }
+    console.log(Reflect.ownKeys(obj));
     for (let key of Reflect.ownKeys(obj)) {
         console.log(key); // title,Symbol('这是一个symbol')
     }
 
-
+    console.log('-----类------');
     let site = Symbol('这是一个symbol')
     class User {
         constructor(username) {
@@ -49,6 +51,7 @@
     }
     let userObj = new User('liqin')
     console.log(userObj.getName());
+    console.log(userObj[site]); // 这样可以获得site
     for (let key in userObj) {
         console.log(key); // 只能获取到username属性， [site]symbol属性被保护起来获取不到
     }
@@ -61,5 +64,5 @@
         'age': 18,
         "fun": function() {}
     };
-    console.log(Object.keys(keyList)); // ["name","age"]
+    console.log(Object.keys(keyList)); // ["name", "age", "fun"]
 </script>

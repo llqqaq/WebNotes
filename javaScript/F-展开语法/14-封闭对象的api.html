@@ -18,7 +18,7 @@
     }
     // 将对象进行封闭，不能添加，删除，修改，不能重新定义特征
     Object.seal(lq)
-
+    // lq.test = 'test' //报错 Cannot add property test, object is not extensible
     console.log(
        JSON.stringify(Object.getOwnPropertyDescriptors(lq), null, 2) 
     );

@@ -18,10 +18,10 @@
             return
         }
         let newArray = [...arr]
+        // 取出来
         let item = newArray.splice(from, 1)
-        console.log(item);
+        // 放置
         newArray.splice(to, 0, ...item)
-        console.log(newArray);
     }
     let arr = [1, 2, 3, 4, 5]
     moveArray(arr, 3, 4)

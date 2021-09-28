@@ -29,17 +29,18 @@
     console.log('----------------------');
     // 将set类型转化为数组
     let lq = new Set('123456')
-    console.log('转换前', lq);
-    console.log('转换后', Array.from(lq));
-    console.log('转换后', [...lq]);
+    console.log('转换前', lq); // Set(6) {"1", "2", "3", "4", "5",'6'}
+    console.log('转换后', Array.from(lq)); // 转数组
+    console.log('转换后', [...lq]); // 转数组
     // 类型互相转换，移除大于四的部分
     let res = [...lq].filter(item => item < 4)
-    lq = new Set(res)
+    lq = new Set(res) // 转成Set类型
     console.log('移除后', lq);
 
     // 经典数组去重，利用Set类型里面不能重复
     let arr = [1, 2, 3, 43, 523, 1, 23, 43, 2]
     let tempSet = new Set(arr) // 去重完毕
+    console.log('tempSet', tempSet);
     // arr = [...tempSet]
     arr = Array.from(tempSet)
     console.log('去重完', arr);

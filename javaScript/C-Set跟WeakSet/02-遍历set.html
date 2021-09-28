@@ -18,6 +18,8 @@
 </html>
 <script>
     let set = new Set(['demo1', 'demo2'])
+    set.add(2)
+    console.log(set); // Set(3) {"demo1", "demo2", 2}
     // 遍历
     for(let key of set) {
         console.log(key);

@@ -17,7 +17,9 @@
     let keyword = ['js', 'css']
     let str = '这是要显示的js跟css'
     // str 作为第一个参数传递给pre,之后的return内容为pre的新值  item是数组的每一个值，  最后返回pre的值
-    let replaceString =   keyword.reduce((pre, item) => pre.replace(item, `<a href=''>${item}</a>`), str)
+    let replaceString =   keyword.reduce((pre, item) => 
+                                   pre.replace(item, `<a href=''>${item}</a>`),
+                                   str)
     console.log(replaceString);
     document.body.innerHTML += replaceString
 </script>
