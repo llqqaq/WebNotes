@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>响应式实现</h1>
+    <div id="app">
+        订阅视图-1: <span class="box-1"></span><br>
+        订阅视图-3: <span class="box-1"></span><br>
+        订阅视图-2: <span class="box-2"></span>
+    </div>
+</body>
+</html>
+<script src="./02-index.js"></script>
+<script>
+    let dataObj = {}
+    dataHi({
+        data: dataObj,
+        tag: 'view-1',
+        datakey: 'one',
+        selector: '.box-1'
+    })
+    // dataHi({
+    //     data: dataObj,
+    //     tag: 'view-2',
+    //     datakey: 'two',
+    //     selector: '.box-2'
+    // })
+</script>

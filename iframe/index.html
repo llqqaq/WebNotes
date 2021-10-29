@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父页面</title>
+</head>
+
+<body id="body">
+    <iframe src="./iframe.html" frameborder="0"></iframe>
+</body>
+
+</html>
+<script>
+    //处理子窗体的事件类型
+    var receive = function (e) {
+        var event = e.data.event;
+        console.log(event);
+        // console.log(typeof localStorage.getItem('fun'));
+        let fun = localStorage.getItem('fun')
+        console.log(fun);
+
+        let r = JSON.parse(fun, function (k, v) {
+            console.log(v);
+            if (v.indexOf && v.indexOf('function') > -1) {
+                console.log(v);
+                return eval("(function(){return " + v + " })()")
+            }
+            return v;
+        });
+        r.fun()
+    };
+
+    //监听子窗体的事件
+    window.addEventListener("message", receive, false);
+
+</script>

@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>放到桌面，发送快捷方式到桌面</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mark.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/console.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/console.js"></script>
+</head>
+<body>
+	<center>
+		<h2>放到桌面，发送快捷方式到桌面(IE浏览器会显示放到桌面这个按钮，其他浏览器不会显示放到桌面这个按钮)</h2>
+		<input id="toDesktopButton" type="button" value="放到桌面" οnclick="toDesktop(location.href, '雪豹软件工作室')">
+	</center>
+</body>
+<script type="text/javascript">
+ 
+	//将快捷方式发送到桌面
+	function toDesktop(sUrl, sName) {
+		try {
+			var WshShell = new ActiveXObject("WScript.Shell");
+			var oUrlLink = WshShell.CreateShortcut(WshShell
+					.SpecialFolders("Desktop")
+					+ "\\" + sName + ".url");
+			oUrlLink.TargetPath = sUrl;
+			oUrlLink.Save();
+			alert("成功创建桌面快捷方式!");
+		} catch (e) {
+			alert("当前IE安全级别不允许操作或您的浏览器不支持此功能！");
+		}
+	}
+	
+	//判断是否是IE浏览器
+	function isIE() {
+		if (!!window.ActiveXObject || "ActiveXObject" in window) {
+// 			alert("是IE浏览器");
+			return true;
+		} else {
+// 			alert("不是IE浏览器");
+			return false;
+		}
+	}
+	
+	//整个页面加载完之后执行函数
+	window.onload = function() {
+		var result = isIE();
+		if (!result) {
+			//不是IE浏览器
+			//获得按钮元素
+			var toDesktopButtonNode = document.getElementById("toDesktopButton");
+			//隐藏按钮
+			toDesktopButtonNode.style.display = "none";
+		}
+	}
+</script>
+</html>
