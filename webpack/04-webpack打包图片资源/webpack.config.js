@@ -11,7 +11,8 @@ module.exports = {
     },
 
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.less$/,
                 // 使用多个loader写法
                 use: [

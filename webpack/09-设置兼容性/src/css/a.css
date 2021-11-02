@@ -1,0 +1,9 @@
+
+.box1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    display: flex;
+    background-clip: border-box;
+    transform: translate(-100px, 100px);
+}

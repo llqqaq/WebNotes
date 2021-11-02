@@ -1,0 +1,20 @@
+
+.box1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-clip: border-box;
+    -webkit-transform: translate(-100px, 100px);
+        -ms-transform: translate(-100px, 100px);
+            transform: translate(-100px, 100px);
+}
+
+
+.box2 {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
