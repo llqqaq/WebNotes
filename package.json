@@ -7,6 +7,11 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.14.7",
+    "babel-loader": "^8.0.6",
+    "core-js": "^3.6.4",
     "css-loader": "^3.4.2",
     "html-loader": "^0.5.5",
     "less": "^3.11.1",
