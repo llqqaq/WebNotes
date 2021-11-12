@@ -1,59 +1,227 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>放到桌面，发送快捷方式到桌面</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mark.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/console.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/console.js"></script>
+    <meta charset="UTF-8">
+    <title>制作一个程序员的生日快乐代码</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style11.css">
+    <link rel="stylesheet" href="css/yanhua.css">
+    <link rel="stylesheet" href="css/style2D.css">
 </head>
+
 <body>
-	<center>
-		<h2>放到桌面，发送快捷方式到桌面(IE浏览器会显示放到桌面这个按钮，其他浏览器不会显示放到桌面这个按钮)</h2>
-		<input id="toDesktopButton" type="button" value="放到桌面" οnclick="toDesktop(location.href, '雪豹软件工作室')">
-	</center>
+    <marquee style="position: fixed; top: 10px; color: #fff" scrollamount="10">Happy birthday!           生日快乐！</marquee>
+    <marquee style="position: fixed; top: 20px; color: #ffd800" scrollamount="3">祝你生日快乐，天天开心！</marquee>
+    <marquee style="position: fixed; top: 50px; color: #00ff90" scrollamount="5">祝你生日快乐，没有烦恼！</marquee>
+    <marquee style="position: fixed; top: 50px; color: #00ff90" scrollamount="5">祝你生日快乐，没有烦恼！</marquee>
+    <marquee style="position: fixed; top: 50px; color: #00ff90" scrollamount="5">祝你生日快乐，没有烦恼！</marquee>
+    <marquee style="position: fixed; top: 50px; color: #00ff90" scrollamount="5">祝你生日快乐，没有烦恼！</marquee>
+    <marquee style="position: fixed; top: 50px; color: #00ff90" scrollamount="5">祝你生日快乐，没有烦恼！</marquee>
+    <marquee style="position: fixed; top: 50px; color: #00ff90" scrollamount="5">祝你生日快乐，没有烦恼！</marquee>
+    <main style="text-align:center;position:absolute;">
+
+        <ul class="star" style="--v: 1; --t: 1;">
+            <li style="--i: 0"></li>
+        </ul>
+        <ul style="--v: 2; --t: 8; --direction:reverse">
+            <li style="--i: 0"></li>
+            <li style="--i: 1"></li>
+            <li style="--i: 2"></li>
+            <li style="--i: 3"></li>
+            <li style="--i: 4"></li>
+            <li style="--i: 5"></li>
+            <li style="--i: 6"></li>
+            <li style="--i: 7"></li>
+        </ul>
+        <ul style="--v: 3; --t: 12">
+            <li style="--i: 0"></li>
+            <li style="--i: 1"></li>
+            <li style="--i: 2"></li>
+            <li style="--i: 3"></li>
+            <li style="--i: 4"></li>
+            <li style="--i: 5"></li>
+            <li style="--i: 6"></li>
+            <li style="--i: 7"></li>
+            <li style="--i: 8"></li>
+            <li style="--i: 9"></li>
+            <li style="--i: 10"></li>
+            <li style="--i: 11"></li>
+        </ul>
+        <ul style="--v: 4; --t: 18; --direction:reverse">
+            <li style="--i: 0"></li>
+            <li style="--i: 1"></li>
+            <li style="--i: 2"></li>
+            <li style="--i: 3"></li>
+            <li style="--i: 4"></li>
+            <li style="--i: 5"></li>
+            <li style="--i: 6"></li>
+            <li style="--i: 7"></li>
+            <li style="--i: 8"></li>
+            <li style="--i: 9"></li>
+            <li style="--i: 10"></li>
+            <li style="--i: 11"></li>
+            <li style="--i: 12"></li>
+            <li style="--i: 13"></li>
+            <li style="--i: 14"></li>
+            <li style="--i: 15"></li>
+            <li style="--i: 16"></li>
+            <li style="--i: 17"></li>
+        </ul>
+
+        </ul>
+        <p id="message" style="position:relative;margin-top:-40px;z-index:99999">
+            <img src="img/birthday.png" alt="Alternate Text" />
+            <br />
+        </p>
+    </main> 
+    <div class="block-audio" style="z-index:10000;">
+    </div>
+    <canvas id="canvas"></canvas>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index1.js"></script>
+    <script src="js/script.js"></script>
+
 </body>
-<script type="text/javascript">
- 
-	//将快捷方式发送到桌面
-	function toDesktop(sUrl, sName) {
-		try {
-			var WshShell = new ActiveXObject("WScript.Shell");
-			var oUrlLink = WshShell.CreateShortcut(WshShell
-					.SpecialFolders("Desktop")
-					+ "\\" + sName + ".url");
-			oUrlLink.TargetPath = sUrl;
-			oUrlLink.Save();
-			alert("成功创建桌面快捷方式!");
-		} catch (e) {
-			alert("当前IE安全级别不允许操作或您的浏览器不支持此功能！");
-		}
-	}
-	
-	//判断是否是IE浏览器
-	function isIE() {
-		if (!!window.ActiveXObject || "ActiveXObject" in window) {
-// 			alert("是IE浏览器");
-			return true;
-		} else {
-// 			alert("不是IE浏览器");
-			return false;
-		}
-	}
-	
-	//整个页面加载完之后执行函数
-	window.onload = function() {
-		var result = isIE();
-		if (!result) {
-			//不是IE浏览器
-			//获得按钮元素
-			var toDesktopButtonNode = document.getElementById("toDesktopButton");
-			//隐藏按钮
-			toDesktopButtonNode.style.display = "none";
-		}
-	}
-</script>
+
+
 </html>
+
+<script>
+	console.clear();
+
+/* Play with these values! */
+const PARTICLE_COUNT = 100;
+const SAFE_DISTANCE = 130;
+const INFECTED_DISTANCE = 15;
+const INFECTION_RATE = 0.25;
+const RECOVERY_TIME = 14000;
+const STAY_AT_HOME = 0.1;
+
+/* ---------------------------------- */
+
+let particles = [];
+
+const STATUSES = {
+  HEALTHY: "HEALTHY",
+  INFECTED: "INFECTED",
+  RECOVERED: "RECOVERED"
+};
+
+const elBody = document.body;
+const elCanvas = document.querySelector("#canvas");
+const ctx = elCanvas.getContext("2d");
+
+let width, height;
+
+function resize() {
+  width = elCanvas.width = elBody.clientWidth;
+  height = elCanvas.height = elBody.clientHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+/* ---------------------------------- */
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.radius = 3;
+    this.color = "white";
+    this.speed = Math.random() < STAY_AT_HOME ? 0 : 1;
+    this.directionAngle = Math.floor(Math.random() * 360);
+    this.vector = {
+      x: Math.cos(this.directionAngle) * this.speed,
+      y: Math.sin(this.directionAngle) * this.speed
+    };
+    this.status = STATUSES.HEALTHY;
+
+    if (Math.random() < INFECTION_RATE) {
+      this.infect();
+    }
+  }
+  infect() {
+    if (
+      this.status === STATUSES.INFECTED ||
+      this.status === STATUSES.RECOVERED
+    ) {
+      return;
+    }
+
+    this.color = "green";
+    this.status = STATUSES.INFECTED;
+
+    setTimeout(() => {
+      this.recover();
+    }, RECOVERY_TIME);
+  }
+  recover() {
+    this.status = STATUSES.RECOVERED;
+    this.color = "hotpink";
+  }
+  draw(drawCtx) {
+    drawCtx.beginPath();
+    drawCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    drawCtx.closePath();
+    drawCtx.fillStyle = this.color;
+    drawCtx.fill();
+  }
+  update() {
+    this.checkBoundaries();
+    this.x += this.vector.x;
+    this.y += this.vector.y;
+  }
+  checkBoundaries() {
+    if (this.x > width || this.x < 0) {
+      this.vector.x *= -1;
+      /* Ensure the dots are pushed inside */
+      this.x = Math.max(0, Math.min(width, this.x));
+    }
+    if (this.y > height || this.y < 0) {
+      this.vector.y *= -1;
+      /* Ensure the dots are pushed inside */
+      this.y = Math.max(0, Math.min(height, this.y));
+    }
+  }
+}
+
+/* ---------------------------------- */
+
+function distance(x1, y1, x2, y2) {
+  var dx = x1 - x2;
+  var dy = y1 - y2;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+function linkParticles(particle, otherParticles, drawCtx) {
+  for (const p of otherParticles) {
+    const d = distance(particle.x, particle.y, p.x, p.y);
+
+    if (d > SAFE_DISTANCE) {
+      continue;
+    }
+
+    // Infect other particle!
+    if (particle.status === STATUSES.INFECTED && d < INFECTED_DISTANCE) {
+      p.infect();
+    }
+
+    const opacity = 0.8 - (d / SAFE_DISTANCE) * 0.8;
+    drawCtx.lineWidth = 1;
+    drawCtx.strokeStyle = particle.color; //rgba(255,255,255,${opacity})`;
+    drawCtx.globalAlpha = opacity;
+    drawCtx.beginPath();
+    drawCtx.moveTo(particle.x, particle.y);
+    drawCtx.lineTo(p.x, p.y);
+    drawCtx.closePath();
+    drawCtx.stroke();
+    drawCtx.globalAlpha = 1;
+  }
+}
+
+
+
+
+</script>
