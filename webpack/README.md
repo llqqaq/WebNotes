@@ -1,0 +1,1 @@
+1. package.json设置的快捷命令，比如"build": "node ./script/build.js", 效果跟直接进script下面运行build.js不一样，build里面文件路径是按当前执行命令的路径决定的。

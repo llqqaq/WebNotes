@@ -24,4 +24,10 @@
         `
     console.log(hd.match(/<span>[\d\D]+<\/span>/)[0]);
      console.log(hd.match(/.+/gs)[0]);
+
+
+    let str = '<p><video class="edui-upload-video  vjs-default-skin video-js" controls="" preload="auto" width="420" data-setup="{}"><source src="https://cloud-7724.oss-cn-hangzhou.aliyuncs.com/77you/upload/2022/03/30/1648626181598830.mp4" type="video/mp4"/></video></p><p><br/></p><p><br/></p>'
+    console.log(str.match(/src=\"/)[0]);
+    var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/
+    console.log(str.match(srcReg));
 </script>
